@@ -21,29 +21,22 @@ export default function Hero({ t }) {
               <Icon name="MessageCircle" />
               {t.ctaPrimary}
             </a>
-            <a className="button button-ghost" href={`#${sectionIds.services}`}>
+            <a className="button button-ghost" href={`#${sectionIds.cities}`}>
               {t.ctaSecondary}
             </a>
           </div>
         </div>
 
-        <aside className="hero-panel" aria-label="Company credentials">
-          <p className="panel-eyebrow">{company.legalGroup}</p>
-          <Credential icon="ShieldCheck" title={company.iata} text={t.iataDescription} />
-          <Credential icon="Plane" title={company.travelBrand} text={t.travelDescription} />
-          <Credential icon="BriefcaseBusiness" title={company.eventsBrand} text={t.eventDescription} />
+        <aside className="hero-panel hero-destination" aria-label="Brazil guide">
+          <span>{t.heroPanelEyebrow}</span>
+          <strong>Brezilya</strong>
+          <div>
+            {t.heroPanelTags.map((tag) => (
+              <em key={tag}>{tag}</em>
+            ))}
+          </div>
         </aside>
       </div>
     </section>
-  );
-}
-
-function Credential({ icon, title, text }) {
-  return (
-    <div className="credential">
-      <Icon name={icon} className="gold" />
-      <h3>{title}</h3>
-      <p>{text}</p>
-    </div>
   );
 }
