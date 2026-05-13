@@ -88,6 +88,90 @@ export const founders = [
   { name: "Vanessa C. Eker" },
 ];
 
+export const groupBrands = [
+  {
+    name: "KIRMIZIBEYAZ DO BRASIL Rent a Car & Shuttle",
+    company: company.transportCompany,
+    icon: "ShieldCheck",
+    text: {
+      tr: "Şoförlü VIP sedan, Mercedes Vito, minibüs, midibüs, otobüs ve şoförsüz araç kiralama operasyonları.",
+      en: "Chauffeur-driven VIP sedans, vans, minibuses, buses and self-drive rental operations.",
+      pt: "Operações com sedans VIP com motorista, vans, micro-ônibus, ônibus e locação sem motorista.",
+      es: "Operaciones con sedanes VIP con chofer, vans, minibuses, autobuses y alquiler sin conductor.",
+    },
+  },
+  {
+    name: "A LA TURCA Travel & MICE",
+    company: company.travelCompany,
+    icon: "Plane",
+    text: {
+      tr: "Turizm, otel, uçak rezervasyonu, biletleme, yerel rehberlik ve MICE seyahat planlaması.",
+      en: "Tourism, hotels, flights, ticketing, local guiding and MICE travel planning.",
+      pt: "Turismo, hotéis, passagens, guias locais e planejamento de viagens MICE.",
+      es: "Turismo, hoteles, boletos, guías locales y planificación de viajes MICE.",
+    },
+  },
+  {
+    name: "EXPOTURQUIA Events & PR",
+    company: company.travelCompany,
+    icon: "BriefcaseBusiness",
+    text: {
+      tr: "Fuar, ticaret heyeti, B2B görüşme, etkinlik, tercüman-hostes ve kurumsal saha organizasyonu.",
+      en: "Trade fairs, delegations, B2B meetings, events, interpreter-hostess staffing and corporate field organization.",
+      pt: "Feiras, missões comerciais, reuniões B2B, eventos, intérpretes, recepcionistas e organização local.",
+      es: "Ferias, misiones comerciales, reuniones B2B, eventos, intérpretes, recepcionistas y organización local.",
+    },
+  },
+];
+
+export const aboutPillars = [
+  {
+    icon: "Globe2",
+    title: {
+      tr: "Yerel Operasyon",
+      en: "Local Operations",
+      pt: "Operação Local",
+      es: "Operación Local",
+    },
+    text: {
+      tr: "Santos / São Paulo merkezli ekip ile Brezilya'da sahaya yakın, hızlı ve uygulanabilir çözümler.",
+      en: "Brazil-based execution through a Santos / São Paulo team close to field operations.",
+      pt: "Execução no Brasil com equipe em Santos / São Paulo, próxima da operação em campo.",
+      es: "Ejecución en Brasil con equipo en Santos / São Paulo, cerca de la operación en campo.",
+    },
+  },
+  {
+    icon: "Languages",
+    title: {
+      tr: "Çok Dilli Koordinasyon",
+      en: "Multilingual Coordination",
+      pt: "Coordenação Multilíngue",
+      es: "Coordinación Multilingüe",
+    },
+    text: {
+      tr: "Türkçe, Portekizce, İngilizce ve İspanyolca iletişimle seyahat, fuar ve kurumsal program yönetimi.",
+      en: "Travel, fair and corporate program coordination in Turkish, Portuguese, English and Spanish.",
+      pt: "Coordenação de viagens, feiras e programas corporativos em turco, português, inglês e espanhol.",
+      es: "Coordinación de viajes, ferias y programas corporativos en turco, portugués, inglés y español.",
+    },
+  },
+  {
+    icon: "Users",
+    title: {
+      tr: "Türkiye - Brezilya Köprüsü",
+      en: "Turkey - Brazil Bridge",
+      pt: "Ponte Turquia - Brasil",
+      es: "Puente Turquía - Brasil",
+    },
+    text: {
+      tr: "Türk firmaları, heyetleri ve ziyaretçileri için Brezilya'da güvenilir yerel temas ve operasyon ağı.",
+      en: "Reliable local contact and operation network in Brazil for Turkish companies, delegations and visitors.",
+      pt: "Rede local confiável no Brasil para empresas, delegações e visitantes da Turquia.",
+      es: "Red local confiable en Brasil para empresas, delegaciones y visitantes de Turquía.",
+    },
+  },
+];
+
 export const people = {
   umutEker: {
     name: "Umut Eker",
@@ -432,6 +516,13 @@ export const translations = {
     aboutText: `${company.transportCompany}; 2013 yılında kurulumu tamamlanan ${company.rentalBrand} markasıyla şoförlü VIP sedan, Mercedes Vito, minibüs, midibüs, otobüs ve şoförsüz araç kiralama alanında faaliyet gösterir. ${company.travelCompany}; ${company.travelBrand} markasıyla 2016 yılından bu yana turizm, otel, uçak rezervasyonu, biletleme ve kokartlı yerel rehberlik hizmetleri verir. Aynı yapıdaki ${company.eventsBrand}, 2021 yılından itibaren toplantı, B2B etkinlikleri, danışmanlık, pazar araştırması, ticaret heyetleri, fuar operasyonları, tercüman-hostes temini ve catering servisleri sunar.`,
     foundedLabel: "São Paulo merkezli başlangıç",
     aboutDetail: "Detaylı Hakkımızda",
+    aboutProfileTitle: "Kurumsal Profil",
+    aboutProfileText: "GRUPOEKER; Brezilya merkezli yapısıyla Güney Amerika'da turizm, ulaşım, araç kiralama, fuar, etkinlik ve B2B saha operasyonları geliştiren entegre bir hizmet grubudur. Yapı; yerel pazar bilgisi, çok dilli iletişim kabiliyeti ve kurumsal organizasyon tecrübesiyle Türkiye ile Brezilya arasındaki seyahat, ticaret ve etkinlik süreçlerinde güvenilir bir operasyon ortağı olarak konumlanır.",
+    aboutBrandsTitle: "Grup Markaları",
+    aboutPillarsTitle: "Operasyon Yaklaşımı",
+    aboutTrustTitle: "Güven ve Yetkinlik",
+    aboutManagementTitle: "Yönetim",
+    aboutCtaTitle: "Brezilya'daki planınız için yerel ekip ile görüşün.",
     travelDescription: "Turizm, otel rezervasyonu, uçak bileti ve kokartlı yerel rehberlik.",
     eventDescription: "Toplantı, B2B etkinliği, ticaret heyeti ve uluslararası fuar operasyonları.",
     iataDescription: "IATA belgeli yerel turizm acentası ve Brezilya operasyon partneri.",
@@ -485,6 +576,13 @@ export const translations = {
     aboutText: `${company.transportCompany} operates chauffeur-driven VIP sedan, Mercedes Vito, minibus, bus and self-drive rental services through ${company.rentalBrand}. ${company.travelCompany} operates tourism, hotels, flights, ticketing and licensed local guiding through ${company.travelBrand}. ${company.eventsBrand} supports meetings, B2B events, consulting, market research, trade delegations, fairs, interpreter-hostess staffing and catering.`,
     foundedLabel: "Founded in São Paulo",
     aboutDetail: "Detailed About",
+    aboutProfileTitle: "Corporate Profile",
+    aboutProfileText: "GRUPOEKER is an integrated service group based in Brazil, developing tourism, transportation, car rental, trade fair, event and B2B field operations across South America. With local market knowledge, multilingual communication and corporate organization experience, it acts as a reliable operational partner between Turkey and Brazil.",
+    aboutBrandsTitle: "Group Brands",
+    aboutPillarsTitle: "Operational Approach",
+    aboutTrustTitle: "Trust and Capability",
+    aboutManagementTitle: "Management",
+    aboutCtaTitle: "Speak with the local team for your Brazil plan.",
     travelDescription: "Tourism, hotel reservations, airline ticketing and licensed local guiding.",
     eventDescription: "Meetings, B2B events, trade delegations and international fair operations.",
     iataDescription: "IATA-certified local travel agency and operational partner in Brazil.",
@@ -538,6 +636,13 @@ export const translations = {
     aboutText: `${company.transportCompany} atua com transporte VIP e locação por meio da marca ${company.rentalBrand}. ${company.travelCompany} opera turismo, hotéis, passagens e guias locais por meio da ${company.travelBrand}. ${company.eventsBrand} apoia reuniões, eventos B2B, consultoria, missões comerciais, feiras, intérpretes, recepcionistas e catering.`,
     foundedLabel: "Fundado em São Paulo",
     aboutDetail: "Sobre detalhado",
+    aboutProfileTitle: "Perfil Corporativo",
+    aboutProfileText: "O GRUPOEKER é um grupo integrado de serviços com base no Brasil, atuando em turismo, transporte, locação de veículos, feiras, eventos e operações B2B na América do Sul. Com conhecimento local, comunicação multilíngue e experiência em organização corporativa, posiciona-se como parceiro operacional confiável entre Turquia e Brasil.",
+    aboutBrandsTitle: "Marcas do Grupo",
+    aboutPillarsTitle: "Abordagem Operacional",
+    aboutTrustTitle: "Confiança e Capacidade",
+    aboutManagementTitle: "Gestão",
+    aboutCtaTitle: "Fale com a equipe local para seu plano no Brasil.",
     travelDescription: "Turismo, reservas de hotéis, passagens aéreas e guias locais credenciados.",
     eventDescription: "Reuniões, eventos B2B, delegações comerciais e operações em feiras internacionais.",
     iataDescription: "Agência local certificada pela IATA e parceira operacional no Brasil.",
@@ -591,6 +696,13 @@ export const translations = {
     aboutText: `${company.transportCompany} opera transporte VIP y alquiler mediante ${company.rentalBrand}. ${company.travelCompany} opera turismo, hoteles, boletos y guías locales mediante ${company.travelBrand}. ${company.eventsBrand} apoya reuniones, eventos B2B, consultoría, misiones comerciales, ferias, intérpretes, recepcionistas y catering.`,
     foundedLabel: "Fundado en São Paulo",
     aboutDetail: "Nosotros en detalle",
+    aboutProfileTitle: "Perfil Corporativo",
+    aboutProfileText: "GRUPOEKER es un grupo integrado de servicios con base en Brasil, enfocado en turismo, transporte, alquiler de vehículos, ferias, eventos y operaciones B2B en Sudamérica. Con conocimiento local, comunicación multilingüe y experiencia en organización corporativa, opera como socio confiable entre Turquía y Brasil.",
+    aboutBrandsTitle: "Marcas del Grupo",
+    aboutPillarsTitle: "Enfoque Operativo",
+    aboutTrustTitle: "Confianza y Capacidad",
+    aboutManagementTitle: "Gestión",
+    aboutCtaTitle: "Hable con el equipo local para su plan en Brasil.",
     travelDescription: "Turismo, reservas hoteleras, emisión de boletos y guías locales acreditados.",
     eventDescription: "Reuniones, eventos B2B, delegaciones comerciales y operaciones en ferias internacionales.",
     iataDescription: "Agencia local certificada por IATA y socio operativo en Brasil.",
