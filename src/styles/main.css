@@ -93,6 +93,7 @@ button {
 
 .brand {
   gap: 10px;
+  color: white;
   font-weight: 700;
 }
 
@@ -453,6 +454,46 @@ select {
   min-height: 104px;
   padding: 22px;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.founders-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 26px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: white;
+  padding: 22px 24px;
+}
+
+.founders-panel span {
+  color: var(--muted);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.founders-panel div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+.founders-panel a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.founders-panel em {
+  color: var(--muted);
+  font-style: normal;
 }
 
 .stat strong {
@@ -877,6 +918,64 @@ select {
   margin-top: 18px;
 }
 
+.person-profile {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 26px;
+  align-items: stretch;
+}
+
+.person-photo,
+.person-card {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.person-photo {
+  display: grid;
+  min-height: 420px;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(245, 200, 76, 0.92), rgba(29, 127, 79, 0.9)),
+    var(--green);
+  color: white;
+}
+
+.person-photo span {
+  display: grid;
+  width: 132px;
+  height: 132px;
+  place-items: center;
+  border: 3px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.person-card {
+  padding: 42px;
+}
+
+.person-card h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1;
+}
+
+.person-card strong {
+  display: block;
+  margin-top: 14px;
+  color: var(--gold);
+}
+
+.person-card p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
 .whatsapp-float {
   position: fixed;
   z-index: 25;
@@ -928,7 +1027,8 @@ select {
   .split,
   .operations-grid,
   .contact-grid,
-  .tour-card {
+  .tour-card,
+  .person-profile {
     grid-template-columns: 1fr;
   }
 

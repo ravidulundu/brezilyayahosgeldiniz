@@ -2,7 +2,7 @@ import About from "./About.jsx";
 import Cities from "./Cities.jsx";
 import Contact from "./Contact.jsx";
 import Tours from "./Tours.jsx";
-import { cities, company, legalContent, localize, routes, sectionIds } from "../data/content.js";
+import { cities, company, legalContent, localize, people, routes, sectionIds } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
 export function PageHero({ title, text, image }) {
@@ -50,6 +50,37 @@ export function ContactPage({ t }) {
     <>
       <PageHero title={t.contactTitle} text={t.contactText} />
       <Contact t={t} id={sectionIds.contact} />
+    </>
+  );
+}
+
+export function UmutEkerPage({ t }) {
+  const person = people.umutEker;
+
+  return (
+    <>
+      <PageHero title={person.name} text={person.role} />
+      <section className="section">
+        <div className="container person-profile">
+          <div className="person-photo" aria-label={person.name}>
+            <span>UE</span>
+          </div>
+          <article className="person-card">
+            <p className="eyebrow">{t.founderProfile}</p>
+            <h2>{person.name}</h2>
+            <strong>{person.birth}</strong>
+            <p>{person.bio}</p>
+            <div className="actions">
+              <a className="button button-dark" href={person.externalUrl} target="_blank" rel="noreferrer">
+                {t.externalProfile}
+              </a>
+              <a className="button button-light" href={routes.about}>
+                {t.aboutEyebrow}
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
     </>
   );
 }

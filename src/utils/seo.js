@@ -1,4 +1,15 @@
-import { cities, cityPath, company, defaultShareImage, routes, siteUrl, socialLinks, tours } from "../data/content.js";
+import {
+  cities,
+  cityPath,
+  company,
+  defaultShareImage,
+  people,
+  routes,
+  seoKeywords,
+  siteUrl,
+  socialLinks,
+  tours,
+} from "../data/content.js";
 
 const urlFor = (path) => new URL(path, siteUrl).href;
 
@@ -25,6 +36,7 @@ export function applySeo(seo, lang) {
 
   setMeta("description", seo.description);
   setMeta("robots", "index, follow, max-image-preview:large");
+  setMeta("keywords", seoKeywords.join(", "));
   setLink("canonical", seo.canonical);
 
   setProperty("og:locale", localeFor(lang));
@@ -49,6 +61,7 @@ function getPageTitle(path, t, city) {
   if (path === routes.cities) return t.citiesTitle;
   if (path === routes.tours) return `${t.toursTitle} | Türkçe Rehber`;
   if (path === routes.contact) return t.contactTitle;
+  if (path === routes.umutEker) return people.umutEker.name;
   if (path === routes.privacy) return t.privacy;
   if (path === routes.terms) return t.terms;
   if (path === routes.cookies) return t.cookies;
@@ -61,6 +74,7 @@ function getPageDescription(path, t, city) {
   if (path === routes.cities) return t.citiesText;
   if (path === routes.tours) return t.toursText;
   if (path === routes.contact) return t.contactText;
+  if (path === routes.umutEker) return people.umutEker.bio;
   if (path === routes.privacy) return "GRUPOEKER Aviso de Privacidade e LGPD: dados tratados, bases legais, direitos do titular, retenção, compartilhamento e canal do encarregado.";
   if (path === routes.terms) return "Kullanım şartları, hizmet kapsamı, tekliflendirme ve kurumsal web sitesi koşulları.";
   if (path === routes.cookies) return "Çerez politikası: zorunlu teknik kullanım, pazarlama çerezi ve reklam izleme durumu.";
@@ -87,7 +101,7 @@ function buildJsonLd({ path, t, city, title, description, canonical, image }) {
     },
     sameAs: socialLinks.map((item) => item.url),
     areaServed: ["Brazil", "Chile", "Argentina", "Colombia", "South America"],
-    knowsAbout: ["Brazil tourism", "VIP transfer", "car rental", "multilingual guiding", "MICE", "B2B events"],
+    knowsAbout: seoKeywords,
   };
 
   const webPage = {
@@ -143,6 +157,22 @@ function buildJsonLd({ path, t, city, title, description, canonical, image }) {
       image: city.image,
       url: canonical,
       provider: { "@id": `${siteUrl}/#organization` },
+    });
+  }
+
+  if (path === routes.umutEker) {
+    graph.push({
+      "@type": "Person",
+      "@id": `${siteUrl}${routes.umutEker}#person`,
+      name: people.umutEker.name,
+      birthDate: "1977-05-17",
+      birthPlace: "Soma, Manisa, Türkiye",
+      jobTitle: people.umutEker.role,
+      description: people.umutEker.bio,
+      url: urlFor(routes.umutEker),
+      sameAs: [people.umutEker.externalUrl],
+      worksFor: { "@id": `${siteUrl}/#organization` },
+      memberOf: ["MÜSİAD", "DTİK", "OREMDER"],
     });
   }
 

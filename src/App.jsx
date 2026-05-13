@@ -15,6 +15,7 @@ import {
   LegalPage,
   NotFoundPage,
   ToursPage,
+  UmutEkerPage,
 } from "./components/PageViews.jsx";
 import Services from "./components/Services.jsx";
 import Tours from "./components/Tours.jsx";
@@ -75,6 +76,7 @@ function renderPage({ path, t, lang, city }) {
   if (path === routes.cities) return <CitiesPage t={t} lang={lang} />;
   if (path === routes.tours) return <ToursPage t={t} lang={lang} />;
   if (path === routes.contact) return <ContactPage t={t} />;
+  if (path === routes.umutEker) return <UmutEkerPage t={t} />;
   if (path === routes.privacy) return <LegalPage t={t} type="privacy" />;
   if (path === routes.terms) return <LegalPage t={t} type="terms" />;
   if (path === routes.cookies) return <LegalPage t={t} type="cookies" />;

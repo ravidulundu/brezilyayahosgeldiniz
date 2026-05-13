@@ -19,6 +19,7 @@ export const routes = {
   cities: "/Şehirler/",
   tours: "/Turlar/",
   contact: "/İletişim/",
+  umutEker: "/umuteker/",
   privacy: "/privacy-policy/",
   terms: "/terms-of-service/",
   cookies: "/cookie-policy/",
@@ -33,6 +34,8 @@ export const oldRouteAliases = {
   "/turlar/": routes.tours,
   "/Iletisim/": routes.contact,
   "/iletisim/": routes.contact,
+  "/UmutEker/": routes.umutEker,
+  "/umut-eker/": routes.umutEker,
 };
 
 export const legalLinks = {
@@ -79,6 +82,53 @@ export const socialLinks = [
     icon: "Instagram",
     url: "https://www.instagram.com/grupoeker?igsh=MWYzYWl1ZDN3OHZsbw%3D%3D",
   },
+];
+
+export const founders = [
+  { name: "Umut Eker", url: routes.umutEker },
+  { name: "Vanessa C. Eker" },
+];
+
+export const people = {
+  umutEker: {
+    name: "Umut Eker",
+    birth: "17.05.1977, Soma / Manisa",
+    role: "GRUPOEKER Yönetici Ortağı",
+    externalUrl: "https://umuteker.com.tr/",
+    bio:
+      "17.05.1977 tarihinde Manisa'nın Soma ilçesinde doğan Umut Eker, ilk ve orta öğrenimini Soma'da tamamladı. Yüksek öğrenimini 1999 yılında İstanbul Üniversitesi Orman Endüstri Mühendisliği bölümünde tamamladı. 2010 yılından bu yana Brezilya'da GRUPOEKER şirketleri çatısı altında faaliyet gösteren KIRMIZIBEYAZ DO BRASIL Rent a Car, A LA TURCA Travel & MICE ve EXPOTURQUIA Events & PR markalarının yöneticiliğini yapmaktadır. MÜSİAD, DTİK ve OREMDER üyesi olan Umut Eker, MÜSİAD Brezilya Başkanlığı görevini yürütmektedir. Türkiye ve Brezilya arasındaki ticari, kültürel ve kurumsal ilişkilerde aktif çalışmalar yapmakta; birçok televizyon kanalında haber yorumcusu olarak canlı yayınlara katılmaktadır.",
+  },
+};
+
+export const seoKeywords = [
+  "Brezilya",
+  "Brasil",
+  "Brazil",
+  "Güney Amerika",
+  "Latin Amerika",
+  "Arjantin",
+  "Kolombiya",
+  "Şili",
+  "Brezilya turizm",
+  "Brezilya araç kiralama",
+  "Brezilya uçak bileti",
+  "Brezilya araba kiralama",
+  "Brezilya fuar",
+  "Brezilya heyet",
+  "Brezilya tercüman",
+  "Brezilya rehber",
+  "Brezilya Türk firması",
+  "Brezilya fuar hostesi",
+  "Brezilya fuar standı",
+  "Brezilya şehir turu",
+  "Brezilya'da yaşayan Türkler",
+  "Türk tercüman",
+  "Türk rehber",
+  "Rio de Janeiro şehir turu",
+  "Rio de Janeiro Türkçe rehber",
+  "Brezilya Türkçe tercüman",
+  "Brezilya tur paketi",
+  "Brezilya turizm acentesi",
 ];
 
 export const logos = [
@@ -413,6 +463,9 @@ export const translations = {
     terms: "Kullanım Şartları",
     cookies: "Çerez Politikası",
     social: "Sosyal medya",
+    foundersLabel: "Kurucu ortaklar",
+    founderProfile: "Profil sayfası",
+    externalProfile: "umuteker.com.tr",
     footerText: "Bu web sitesi yalnızca kurumsal tanıtım ve iletişim amacıyla hizmet vermektedir.",
     backHome: "Ana sayfaya dön",
     pageNotFound: "Sayfa bulunamadı",
@@ -462,6 +515,9 @@ export const translations = {
     terms: "Terms of Service",
     cookies: "Cookie Policy",
     social: "Social media",
+    foundersLabel: "Founding partners",
+    founderProfile: "Profile page",
+    externalProfile: "umuteker.com.tr",
     footerText: "This website is intended solely for corporate presentation and communication purposes.",
     backHome: "Back home",
     pageNotFound: "Page not found",
@@ -511,6 +567,9 @@ export const translations = {
     terms: "Termos de Uso",
     cookies: "Política de Cookies",
     social: "Redes sociais",
+    foundersLabel: "Sócios fundadores",
+    founderProfile: "Página de perfil",
+    externalProfile: "umuteker.com.tr",
     footerText: "Este site tem finalidade exclusivamente institucional e de comunicação corporativa.",
     backHome: "Voltar ao início",
     pageNotFound: "Página não encontrada",
@@ -560,6 +619,9 @@ export const translations = {
     terms: "Términos de Servicio",
     cookies: "Política de Cookies",
     social: "Redes sociales",
+    foundersLabel: "Socios fundadores",
+    founderProfile: "Página de perfil",
+    externalProfile: "umuteker.com.tr",
     footerText: "Este sitio web tiene fines exclusivamente institucionales y de comunicación corporativa.",
     backHome: "Volver al inicio",
     pageNotFound: "Página no encontrada",

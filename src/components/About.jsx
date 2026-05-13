@@ -1,4 +1,4 @@
-import { company, logos } from "../data/content.js";
+import { company, founders, logos } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
 export default function About({ t, id }) {
@@ -55,7 +55,25 @@ export default function About({ t, id }) {
             </div>
           ))}
         </div>
+
+        <div className="founders-panel">
+          <span>{t.foundersLabel}</span>
+          <div>
+            {founders.map((founder, index) => (
+              <FragmentFounder founder={founder} key={founder.name} separator={index < founders.length - 1} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function FragmentFounder({ founder, separator }) {
+  return (
+    <>
+      {founder.url ? <a href={founder.url}>{founder.name}</a> : <strong>{founder.name}</strong>}
+      {separator && <em>/</em>}
+    </>
   );
 }
