@@ -62,8 +62,8 @@ export function UmutEkerPage({ t }) {
       <PageHero title={person.name} text={person.role} />
       <section className="section">
         <div className="container person-profile">
-          <div className="person-photo" aria-label={person.name}>
-            <span>UE</span>
+          <div className="person-photo">
+            <img src={person.image} alt={person.name} />
           </div>
           <article className="person-card">
             <p className="eyebrow">{t.founderProfile}</p>

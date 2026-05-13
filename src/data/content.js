@@ -94,6 +94,7 @@ export const people = {
     name: "Umut Eker",
     birth: "17.05.1977, Soma / Manisa",
     role: "GRUPOEKER Yönetici Ortağı",
+    image: "/Untitled3.jpg",
     externalUrl: "https://umuteker.com.tr/",
     bio:
       "17.05.1977 tarihinde Manisa'nın Soma ilçesinde doğan Umut Eker, ilk ve orta öğrenimini Soma'da tamamladı. Yüksek öğrenimini 1999 yılında İstanbul Üniversitesi Orman Endüstri Mühendisliği bölümünde tamamladı. 2010 yılından bu yana Brezilya'da GRUPOEKER şirketleri çatısı altında faaliyet gösteren KIRMIZIBEYAZ DO BRASIL Rent a Car, A LA TURCA Travel & MICE ve EXPOTURQUIA Events & PR markalarının yöneticiliğini yapmaktadır. MÜSİAD, DTİK ve OREMDER üyesi olan Umut Eker, MÜSİAD Brezilya Başkanlığı görevini yürütmektedir. Türkiye ve Brezilya arasındaki ticari, kültürel ve kurumsal ilişkilerde aktif çalışmalar yapmakta; birçok televizyon kanalında haber yorumcusu olarak canlı yayınlara katılmaktadır.",
