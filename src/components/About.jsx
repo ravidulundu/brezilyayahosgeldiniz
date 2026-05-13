@@ -1,7 +1,7 @@
-import { company, founders, logos } from "../data/content.js";
+import { company, founders, logos, routes } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
-export default function About({ t, id }) {
+export default function About({ t, id, compact = false }) {
   const milestones = [
     [company.started, t.foundedLabel, "Globe2"],
     [company.foundedTravel, company.travelBrand, "Plane"],
@@ -17,36 +17,45 @@ export default function About({ t, id }) {
 
   return (
     <section id={id} className="section section-about">
-      <div className="container about-shell">
+      <div className={`container about-shell ${compact ? "about-compact" : ""}`}>
         <div className="split">
           <div>
             <p className="eyebrow">{t.aboutEyebrow}</p>
             <h2>{t.aboutTitle}</h2>
             <p className="lead">{t.aboutLead}</p>
+            {compact && (
+              <a className="button button-dark about-detail-button" href={routes.about}>
+                {t.aboutDetail}
+              </a>
+            )}
           </div>
           <p className="body-copy">{t.aboutText}</p>
         </div>
 
-        <div className="logo-grid">
-          {logos.map((logo) => (
-            <div className="logo-card" key={logo.name}>
-              <img src={logo.image} alt={logo.name} loading="lazy" />
-              <span>{logo.name}</span>
-            </div>
-          ))}
-        </div>
+        {!compact && (
+          <div className="logo-grid">
+            {logos.map((logo) => (
+              <div className="logo-card" key={logo.name}>
+                <img src={logo.image} alt={logo.name} loading="lazy" />
+                <span>{logo.name}</span>
+              </div>
+            ))}
+          </div>
+        )}
 
-        <div className="milestone-grid">
-          {milestones.map(([year, label, icon]) => (
-            <article className="milestone" key={label}>
-              <Icon name={icon} />
-              <strong>{year}</strong>
-              <span>{label}</span>
-            </article>
-          ))}
-        </div>
+        {!compact && (
+          <div className="milestone-grid">
+            {milestones.map(([year, label, icon]) => (
+              <article className="milestone" key={label}>
+                <Icon name={icon} />
+                <strong>{year}</strong>
+                <span>{label}</span>
+              </article>
+            ))}
+          </div>
+        )}
 
-        <div className="stats-grid">
+        <div className={`stats-grid ${compact ? "stats-compact" : ""}`}>
           {stats.map(([value, label, icon]) => (
             <div className="stat" key={label}>
               <Icon name={icon} className="gold" />

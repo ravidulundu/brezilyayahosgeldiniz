@@ -327,6 +327,27 @@ select {
   box-shadow: var(--shadow);
 }
 
+.about-compact {
+  padding: 38px;
+}
+
+.about-compact .split {
+  grid-template-columns: 0.86fr 1.14fr;
+}
+
+.about-compact h2 {
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
+}
+
+.about-compact .body-copy {
+  font-size: 0.98rem;
+}
+
+.about-detail-button {
+  display: inline-flex;
+  margin-top: 26px;
+}
+
 .split {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -447,6 +468,19 @@ select {
   border-radius: 24px;
   background: var(--green);
   color: white;
+}
+
+.stats-compact {
+  margin-top: 22px;
+}
+
+.stats-compact .stat {
+  min-height: 88px;
+  padding: 18px;
+}
+
+.stats-compact .stat strong {
+  font-size: 1.35rem;
 }
 
 .stat {
@@ -1028,6 +1062,10 @@ select {
   .body-copy {
     padding-left: 0;
     border-left: 0;
+  }
+
+  .about-compact .split {
+    grid-template-columns: 1fr;
   }
 
   .logo-grid,
