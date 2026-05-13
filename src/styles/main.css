@@ -179,6 +179,10 @@ select {
   gap: 44px;
 }
 
+.hero-grid-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .pill {
   display: inline-flex;
   max-width: 100%;
@@ -258,54 +262,6 @@ select {
   border: 1px solid var(--line);
   background: white;
   color: var(--green);
-}
-
-.hero-panel {
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 24px;
-  background: rgba(16, 37, 31, 0.42);
-  padding: 22px;
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(20px);
-}
-
-.hero-destination {
-  align-self: end;
-}
-
-.hero-destination span {
-  display: block;
-  color: var(--gold-bright);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.hero-destination strong {
-  display: block;
-  margin-top: 14px;
-  color: white;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 0.94;
-}
-
-.hero-destination div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.hero-destination em {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 7px 10px;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 0.78rem;
-  font-style: normal;
-  font-weight: 800;
 }
 
 .panel-eyebrow,
@@ -1166,7 +1122,6 @@ select {
     width: 100%;
   }
 
-  .hero-panel,
   .about-shell,
   .contact-panel,
   .contact-form,

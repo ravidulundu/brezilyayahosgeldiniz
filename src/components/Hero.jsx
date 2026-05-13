@@ -11,7 +11,7 @@ export default function Hero({ t }) {
       />
       <div className="hero-shade" />
 
-      <div className="container hero-grid">
+      <div className="container hero-grid hero-grid-single">
         <div className="hero-copy">
           <p className="pill">{t.badge}</p>
           <h1>{t.heroTitle}</h1>
@@ -26,16 +26,6 @@ export default function Hero({ t }) {
             </a>
           </div>
         </div>
-
-        <aside className="hero-panel hero-destination" aria-label="Brazil guide">
-          <span>{t.heroPanelEyebrow}</span>
-          <strong>Brezilya</strong>
-          <div>
-            {t.heroPanelTags.map((tag) => (
-              <em key={tag}>{tag}</em>
-            ))}
-          </div>
-        </aside>
       </div>
     </section>
   );

@@ -60,7 +60,6 @@ function HomePage({ t, lang }) {
   return (
     <>
       <Hero t={t} />
-      <About t={t} id={sectionIds.about} compact />
       <Services t={t} lang={lang} id={sectionIds.services} />
       <Cities t={t} lang={lang} id={sectionIds.cities} />
       <Tours t={t} lang={lang} id={sectionIds.tours} />
