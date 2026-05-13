@@ -1,8 +1,7 @@
 export const languages = ["tr", "en", "pt", "es"];
 
 export const siteUrl = "https://www.brezilyayahosgeldiniz.com";
-export const defaultShareImage =
-  "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=1200&auto=format&fit=crop";
+export const defaultShareImage = `${siteUrl}/logo.png`;
 
 export const sectionIds = {
   about: "about",

@@ -10,7 +10,7 @@ export default function Header({ lang, setLang, nav, homeSections }) {
     <header className="site-header">
       <div className="container header-inner">
         <a href="/" className="brand" aria-label={company.name}>
-          <Icon name="Globe2" />
+          <img src="/logo.png" alt="" className="brand-logo" />
           <span className="brand-full">{company.name}</span>
           <span className="brand-short">Brasil</span>
         </a>
