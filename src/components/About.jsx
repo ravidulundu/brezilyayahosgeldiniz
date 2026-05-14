@@ -1,4 +1,5 @@
-import { company, founders, logos, routes } from "../data/content.js";
+import { company, routes } from "../data/content.js";
+import { founders, logos } from "../data/page-data.js";
 import Icon from "./Icon.jsx";
 
 export default function About({ t, id, compact = false }) {

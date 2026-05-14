@@ -2,19 +2,8 @@ import About from "./About.jsx";
 import Cities from "./Cities.jsx";
 import Contact from "./Contact.jsx";
 import Tours from "./Tours.jsx";
-import {
-  aboutPillars,
-  cities,
-  company,
-  founders,
-  groupBrands,
-  legalContent,
-  localize,
-  logos,
-  people,
-  routes,
-  sectionIds,
-} from "../data/content.js";
+import { cities, company, localize, routes, sectionIds } from "../data/content.js";
+import { aboutPillars, founders, groupBrands, legalContent, logos, people } from "../data/page-data.js";
 import Icon from "./Icon.jsx";
 
 export function PageHero({ title, text, image }) {

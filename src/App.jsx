@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
-import About from "./components/About.jsx";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import Cities from "./components/Cities.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
@@ -7,18 +6,18 @@ import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import Icon from "./components/Icon.jsx";
 import Operations from "./components/Operations.jsx";
-import {
-  AboutPage,
-  CitiesPage,
-  CityPage,
-  ContactPage,
-  LegalPage,
-  NotFoundPage,
-  ToursPage,
-  UmutEkerPage,
-} from "./components/PageViews.jsx";
 import Services from "./components/Services.jsx";
 import Tours from "./components/Tours.jsx";
+
+const pv = () => import("./components/PageViews.jsx");
+const AboutPage = lazy(() => pv().then((m) => ({ default: m.AboutPage })));
+const CitiesPage = lazy(() => pv().then((m) => ({ default: m.CitiesPage })));
+const CityPage = lazy(() => pv().then((m) => ({ default: m.CityPage })));
+const ContactPage = lazy(() => pv().then((m) => ({ default: m.ContactPage })));
+const LegalPage = lazy(() => pv().then((m) => ({ default: m.LegalPage })));
+const NotFoundPage = lazy(() => pv().then((m) => ({ default: m.NotFoundPage })));
+const ToursPage = lazy(() => pv().then((m) => ({ default: m.ToursPage })));
+const UmutEkerPage = lazy(() => pv().then((m) => ({ default: m.UmutEkerPage })));
 import { cities, cityPath, company, oldRouteAliases, routes, sectionIds, translations } from "./data/content.js";
 import { applySeo, buildSeo } from "./utils/seo.js";
 
@@ -54,7 +53,7 @@ export default function App() {
   return (
     <>
       <Header lang={lang} setLang={handleLangChange} nav={t.nav} />
-      <main>{page}</main>
+      <main><Suspense fallback={null}>{page}</Suspense></main>
       <a className="whatsapp-float" href={company.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
         <svg className="whatsapp-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.832 6.502L4 29l7.752-1.814A11.94 11.94 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3z" fill="white" fillOpacity="0.15"/>

@@ -3,13 +3,13 @@ import {
   cityPath,
   company,
   defaultShareImage,
-  people,
   routes,
   seoKeywords,
   siteUrl,
   socialLinks,
   tours,
 } from "../data/content.js";
+import { people } from "../data/page-data.js";
 
 const urlFor = (path) => new URL(path, siteUrl).href;
 
