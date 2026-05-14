@@ -310,7 +310,7 @@ export const cities = [
   {
     name: "Rio de Janeiro",
     slug: "Rio-de-Janeiro",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Cidade_Maravilhosa.jpg/800px-Cidade_Maravilhosa.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Cidade_Maravilhosa.jpg/1280px-Cidade_Maravilhosa.jpg",
     text: {
       tr: "Brezilya'nın en büyük ve en popüler şehirlerinden biri olan Rio de Janeiro, Copacabana, Ipanema, Cristo Redentor, Rio Karnavalı, Sugarloaf Dağı ve Santa Teresa ile tanınır.",
       en: "One of Brazil's most iconic destinations, known for Copacabana, Ipanema, Christ the Redeemer, Carnival, Sugarloaf and Santa Teresa.",
@@ -333,7 +333,7 @@ export const cities = [
   {
     name: "Brasília",
     slug: "Brasilia",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/800px-Planalto_Central_%28cropped%29.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/1280px-Planalto_Central_%28cropped%29.jpg",
     text: {
       tr: "Başkent Brasília, modern mimarisi ve planlı yapısıyla dikkat çeker. UNESCO Dünya Mirası listesindeki şehir Oscar Niemeyer yapılarıyla öne çıkar.",
       en: "Brazil's planned capital is known for modern architecture, UNESCO heritage status and Oscar Niemeyer landmarks.",
@@ -356,7 +356,7 @@ export const cities = [
   {
     name: "São Paulo",
     slug: "Sao-Paulo",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Marginal_Pinheiros_e_Jockey_Club.jpg/800px-Marginal_Pinheiros_e_Jockey_Club.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Marginal_Pinheiros_e_Jockey_Club.jpg/1280px-Marginal_Pinheiros_e_Jockey_Club.jpg",
     text: {
       tr: "Brezilya'nın ticaret ve kültür merkezi; MASP, Teatro Municipal, fuarlar, iş seyahatleri, gastronomi ve kurumsal etkinlikler için güçlü bir merkez.",
       en: "Brazil's business and cultural hub for MASP, Teatro Municipal, trade fairs, corporate travel, gastronomy and events.",
@@ -379,7 +379,7 @@ export const cities = [
   {
     name: "Salvador",
     slug: "Salvador",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Salvador_BA_%28cropped%29_2.jpg/800px-Salvador_BA_%28cropped%29_2.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Salvador_BA_%28cropped%29_2.jpg/1280px-Salvador_BA_%28cropped%29_2.jpg",
     text: {
       tr: "Brezilya'nın kültürel kalbi; renkli sokakları, Afrika kökenli ritüelleri, karnaval coşkusu, tarihi yapıları, plajları ve müziğiyle öne çıkar.",
       en: "Brazil's cultural heart, known for colorful streets, Afro-Brazilian heritage, carnival, historic architecture, beaches and music.",
@@ -402,7 +402,7 @@ export const cities = [
   {
     name: "Fortaleza",
     slug: "Fortaleza",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Fortaleza%2C_Brazil_%284%29_%28cropped%29.jpg/800px-Fortaleza%2C_Brazil_%284%29_%28cropped%29.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Fortaleza%2C_Brazil_%284%29_%28cropped%29.jpg/1280px-Fortaleza%2C_Brazil_%284%29_%28cropped%29.jpg",
     text: {
       tr: "Fortaleza, Brezilya'nın kuzeydoğusunda eşsiz plajları, Praia do Futuro, gece hayatı ve forró kültürüyle tanınan tropik bir şehirdir.",
       en: "A tropical northeastern city known for beaches, Praia do Futuro, nightlife and forró culture.",
@@ -425,7 +425,7 @@ export const cities = [
   {
     name: "Foz do Iguaçu",
     slug: "Foz-do-Iguacu",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/SkylineFoz.JPG/800px-SkylineFoz.JPG",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/SkylineFoz.JPG/1280px-SkylineFoz.JPG",
     text: {
       tr: "Iguaçu Şelaleleri, Arjantin-Paraguay sınır hattı, kültürel çeşitlilik ve Itaipu Barajı ile doğa odaklı eşsiz bir destinasyondur.",
       en: "A unique nature destination with Iguaçu Falls, the Argentina-Paraguay border region, cultural diversity and Itaipu Dam.",
@@ -448,7 +448,7 @@ export const cities = [
   {
     name: "Vitória",
     slug: "Vitoria",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/-2016-11-05_ao_13-_Vit%C3%B3ria_94_Romerito_Pontes_%2830875449812%29_%28cropped%29.jpg/800px--2016-11-05_ao_13-_Vit%C3%B3ria_94_Romerito_Pontes_%2830875449812%29_%28cropped%29.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/-2016-11-05_ao_13-_Vit%C3%B3ria_94_Romerito_Pontes_%2830875449812%29_%28cropped%29.jpg/1280px--2016-11-05_ao_13-_Vit%C3%B3ria_94_Romerito_Pontes_%2830875449812%29_%28cropped%29.jpg",
     text: {
       tr: "Vitória, Espírito Santo eyaletinin başkentidir. Atlantik kıyısı, adalarla çevrili konumu, sakin plajları ve deniz ürünleriyle tanınır.",
       en: "The capital of Espírito Santo, known for its Atlantic coastline, island setting, calm beaches and seafood culture.",
@@ -471,7 +471,7 @@ export const cities = [
   {
     name: "Maceió",
     slug: "Maceio",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Praia_de_Ipioca_-_Macei%C3%B3_-_Alagoas_%2811394603505%29.jpg/800px-Praia_de_Ipioca_-_Macei%C3%B3_-_Alagoas_%2811394603505%29.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Praia_de_Ipioca_-_Macei%C3%B3_-_Alagoas_%2811394603505%29.jpg/1280px-Praia_de_Ipioca_-_Macei%C3%B3_-_Alagoas_%2811394603505%29.jpg",
     text: {
       tr: "Maceió, turkuaz denizi, beyaz kumlu plajları, Ponta Verde, Pajuçara, doğal lagünleri ve el sanatları pazarlarıyla bilinir.",
       en: "A coastal city known for turquoise waters, white-sand beaches, Ponta Verde, Pajuçara, natural lagoons and craft markets.",
@@ -494,7 +494,7 @@ export const cities = [
   {
     name: "Florianópolis",
     slug: "Florianopolis",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Morro_da_Cruz%2C_Florian%C3%B3polis_-_SC%2C_Brazil_-_panoramio_%28cropped%29.jpg/800px-Morro_da_Cruz%2C_Florian%C3%B3polis_-_SC%2C_Brazil_-_panoramio_%28cropped%29.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Morro_da_Cruz%2C_Florian%C3%B3polis_-_SC%2C_Brazil_-_panoramio_%28cropped%29.jpg/1280px-Morro_da_Cruz%2C_Florian%C3%B3polis_-_SC%2C_Brazil_-_panoramio_%28cropped%29.jpg",
     text: {
       tr: "Santa Catarina'nın başkenti, Büyülü Ada olarak anılır; plajları, sörf kültürü, gece hayatı ve şehir-doğa dengesiyle öne çıkar.",
       en: "Santa Catarina's capital, known as the Magic Island, with beaches, surf culture, nightlife and city-nature balance.",
