@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "markdown-negotiation",
+      "type": "http",
+      "description": "Returns homepage content as Markdown when requested with Accept: text/markdown header",
+      "url": "https://www.brezilyayahosgeldiniz.com/index.md"
+    },
+    {
+      "name": "api-catalog",
+      "type": "http",
+      "description": "API catalog for automated resource discovery (RFC 9727)",
+      "url": "https://www.brezilyayahosgeldiniz.com/.well-known/api-catalog"
+    },
+    {
+      "name": "sitemap",
+      "type": "http",
+      "description": "Full site structure and all page URLs",
+      "url": "https://www.brezilyayahosgeldiniz.com/sitemap.xml"
+    }
+  ]
+}

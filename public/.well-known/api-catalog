@@ -1,0 +1,19 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://www.brezilyayahosgeldiniz.com/",
+      "service-doc": [
+        {
+          "href": "https://www.brezilyayahosgeldiniz.com/index.md",
+          "type": "text/markdown"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://www.brezilyayahosgeldiniz.com/sitemap.xml",
+          "type": "application/xml"
+        }
+      ]
+    }
+  ]
+}

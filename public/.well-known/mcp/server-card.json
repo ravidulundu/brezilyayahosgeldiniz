@@ -1,0 +1,31 @@
+{
+  "serverInfo": {
+    "name": "brezilyayahosgeldiniz",
+    "version": "1.0.0",
+    "description": "GRUPOEKER — Turkish-Brazilian tourism, VIP transfer and MICE operations. Based in Santos / São Paulo, Brazil. Founded 2010. IATA TIDS: 96120975."
+  },
+  "capabilities": {
+    "resources": true,
+    "tools": false,
+    "prompts": false
+  },
+  "resources": [
+    {
+      "name": "site-content",
+      "description": "Full site content in Markdown — services, destinations, contact info",
+      "uri": "https://www.brezilyayahosgeldiniz.com/index.md",
+      "mimeType": "text/markdown"
+    },
+    {
+      "name": "sitemap",
+      "description": "All page URLs and structure",
+      "uri": "https://www.brezilyayahosgeldiniz.com/sitemap.xml",
+      "mimeType": "application/xml"
+    }
+  ],
+  "contact": {
+    "whatsapp": "https://wa.me/5511959590530",
+    "email": "eker@eker.com.br",
+    "website": "https://www.brezilyayahosgeldiniz.com"
+  }
+}
