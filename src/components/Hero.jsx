@@ -2,7 +2,7 @@ import { company, sectionIds } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
 const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=65&w=1280&auto=format&fit=crop&fm=webp";
+  "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=45&w=1024&auto=format&fit=crop&fm=webp";
 
 export default function Hero({ t }) {
   const ticker = t.heroTicker ?? [];
