@@ -16,7 +16,7 @@ export default function About({ t, id, compact = false }) {
   ];
 
   return (
-    <section id={id} className="section section-about">
+    <section id={id} className="section section-cream section-about">
       <div className={`container about-shell ${compact ? "about-compact" : ""}`}>
         <div className="split">
           <div>

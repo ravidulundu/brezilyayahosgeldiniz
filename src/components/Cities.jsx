@@ -1,29 +1,41 @@
-import { cities, cityPath, localize } from "../data/content.js";
+import { cities, cityPath, localize, routes } from "../data/content.js";
 import Icon from "./Icon.jsx";
 import { SectionIntro } from "./Services.jsx";
 
-export default function Cities({ t, lang, id }) {
+export default function Cities({ t, lang, id, limit }) {
+  const displayed = limit ? cities.slice(0, limit) : cities;
+
   return (
-    <section id={id} className="section">
+    <section id={id} className="section section-cream">
       <div className="container">
         <SectionIntro eyebrow={t.nav[2][0]} title={t.citiesTitle} text={t.citiesText} />
         <div className="city-grid">
-          {cities.map((city) => (
+          {displayed.map((city) => (
             <article className="city-card" key={city.name}>
               <div className="city-media">
                 <img src={city.image} alt={city.name} loading="lazy" />
-                <div>
-                  <Icon name="MapPin" className="gold" />
+              </div>
+              <div className="city-overlay">
+                <div className="city-name-row">
+                  <Icon name="MapPin" size={16} className="gold" />
                   <h3>{city.name}</h3>
                 </div>
+                <p className="city-desc">{localize(city.text, lang)}</p>
+                <a className="city-cta" href={cityPath(city)}>
+                  {t.cityDetails} →
+                </a>
               </div>
-              <p>{localize(city.text, lang)}</p>
-              <a className="text-link" href={cityPath(city)}>
-                {t.cityDetails}
-              </a>
             </article>
           ))}
         </div>
+        {limit && (
+          <div className="cities-see-all">
+            <a className="button button-dark" href={routes.cities}>
+              <Icon name="Map" />
+              {t.citiesTitle} →
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

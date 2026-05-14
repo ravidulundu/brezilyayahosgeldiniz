@@ -1,7 +1,14 @@
 import { company, routes } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
-export default function Contact({ t, id }) {
+const INFO_ROWS = [
+  { key: "tourism", icon: "MapPin", field: "addressTourism" },
+  { key: "rental", icon: "Car", field: "addressRental" },
+  { key: "phone", icon: "Phone", field: "phones" },
+  { key: "email", icon: "Mail", field: "emails" },
+];
+
+export default function Contact({ t, id, className = "" }) {
   function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -17,18 +24,40 @@ export default function Contact({ t, id }) {
     window.location.href = `mailto:${company.emails[0]}?subject=${subject}&body=${body}`;
   }
 
+  const infoValues = {
+    addressTourism: company.addressTourism,
+    addressRental: company.addressRental,
+    phones: company.phones.join(" · "),
+    emails: company.emails.slice(0, 2).join(" · "),
+  };
+
   return (
-    <section id={id} className="section contact-section">
+    <section id={id} className={`section contact-section ${className}`.trim()}>
       <div className="container contact-grid">
         <div className="contact-panel">
-          <h2>{t.contactTitle}</h2>
-          <p>{t.contactText}</p>
-          <dl>
-            <ContactRow label={t.tourism} value={company.addressTourism} />
-            <ContactRow label={t.rental} value={company.addressRental} />
-            <ContactRow label={t.phone} value={company.phones.join(" | ")} />
-            <ContactRow label={t.email} value={company.emails.join(" | ")} />
-          </dl>
+          <div className="contact-panel-dots" aria-hidden="true" />
+          <div className="contact-panel-inner">
+            <div className="contact-accent-line" />
+            <h2>{t.contactTitle}</h2>
+            <p>{t.contactText}</p>
+            <dl className="contact-info-list">
+              {INFO_ROWS.map(({ key, icon, field }) => (
+                <div className="contact-info-row" key={key}>
+                  <div className="contact-info-icon">
+                    <Icon name={icon} size={15} />
+                  </div>
+                  <div>
+                    <dt>{t[key]}</dt>
+                    <dd>{infoValues[field]}</dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
+            <div className="contact-iata-badge">
+              <Icon name="ShieldCheck" size={13} />
+              <span>{company.iata}</span>
+            </div>
+          </div>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit}>
@@ -57,7 +86,7 @@ export default function Contact({ t, id }) {
               <Icon name="Send" />
               {t.submitLabel}
             </button>
-            <a className="button button-light" href={company.whatsapp}>
+            <a className="button button-light" href={company.whatsapp} target="_blank" rel="noreferrer">
               <Icon name="MessageCircle" />
               {t.whatsappLabel}
             </a>
@@ -65,14 +94,5 @@ export default function Contact({ t, id }) {
         </form>
       </div>
     </section>
-  );
-}
-
-function ContactRow({ label, value }) {
-  return (
-    <div>
-      <dt>{label}</dt>
-      <dd>{value}</dd>
-    </div>
   );
 }
