@@ -310,7 +310,7 @@ export const cities = [
   {
     name: "Rio de Janeiro",
     slug: "Rio-de-Janeiro",
-    image: "/cities/rio.jpg",
+    image: "/cities/rio.webp",
     text: {
       tr: "Brezilya'nın en büyük ve en popüler şehirlerinden biri olan Rio de Janeiro, Copacabana, Ipanema, Cristo Redentor, Rio Karnavalı, Sugarloaf Dağı ve Santa Teresa ile tanınır.",
       en: "One of Brazil's most iconic destinations, known for Copacabana, Ipanema, Christ the Redeemer, Carnival, Sugarloaf and Santa Teresa.",
@@ -333,7 +333,7 @@ export const cities = [
   {
     name: "Brasília",
     slug: "Brasilia",
-    image: "/cities/brasilia.jpg",
+    image: "/cities/brasilia.webp",
     text: {
       tr: "Başkent Brasília, modern mimarisi ve planlı yapısıyla dikkat çeker. UNESCO Dünya Mirası listesindeki şehir Oscar Niemeyer yapılarıyla öne çıkar.",
       en: "Brazil's planned capital is known for modern architecture, UNESCO heritage status and Oscar Niemeyer landmarks.",
@@ -356,7 +356,7 @@ export const cities = [
   {
     name: "São Paulo",
     slug: "Sao-Paulo",
-    image: "/cities/saopaulo.jpg",
+    image: "/cities/saopaulo.webp",
     text: {
       tr: "Brezilya'nın ticaret ve kültür merkezi; MASP, Teatro Municipal, fuarlar, iş seyahatleri, gastronomi ve kurumsal etkinlikler için güçlü bir merkez.",
       en: "Brazil's business and cultural hub for MASP, Teatro Municipal, trade fairs, corporate travel, gastronomy and events.",
@@ -379,7 +379,7 @@ export const cities = [
   {
     name: "Salvador",
     slug: "Salvador",
-    image: "/cities/salvador.jpg",
+    image: "/cities/salvador.webp",
     text: {
       tr: "Brezilya'nın kültürel kalbi; renkli sokakları, Afrika kökenli ritüelleri, karnaval coşkusu, tarihi yapıları, plajları ve müziğiyle öne çıkar.",
       en: "Brazil's cultural heart, known for colorful streets, Afro-Brazilian heritage, carnival, historic architecture, beaches and music.",
@@ -402,7 +402,7 @@ export const cities = [
   {
     name: "Fortaleza",
     slug: "Fortaleza",
-    image: "/cities/fortaleza.jpg",
+    image: "/cities/fortaleza.webp",
     text: {
       tr: "Fortaleza, Brezilya'nın kuzeydoğusunda eşsiz plajları, Praia do Futuro, gece hayatı ve forró kültürüyle tanınan tropik bir şehirdir.",
       en: "A tropical northeastern city known for beaches, Praia do Futuro, nightlife and forró culture.",
@@ -425,7 +425,7 @@ export const cities = [
   {
     name: "Foz do Iguaçu",
     slug: "Foz-do-Iguacu",
-    image: "/cities/foz.jpg",
+    image: "/cities/foz.webp",
     text: {
       tr: "Iguaçu Şelaleleri, Arjantin-Paraguay sınır hattı, kültürel çeşitlilik ve Itaipu Barajı ile doğa odaklı eşsiz bir destinasyondur.",
       en: "A unique nature destination with Iguaçu Falls, the Argentina-Paraguay border region, cultural diversity and Itaipu Dam.",
@@ -448,7 +448,7 @@ export const cities = [
   {
     name: "Vitória",
     slug: "Vitoria",
-    image: "/cities/vitoria.jpg",
+    image: "/cities/vitoria.webp",
     text: {
       tr: "Vitória, Espírito Santo eyaletinin başkentidir. Atlantik kıyısı, adalarla çevrili konumu, sakin plajları ve deniz ürünleriyle tanınır.",
       en: "The capital of Espírito Santo, known for its Atlantic coastline, island setting, calm beaches and seafood culture.",
@@ -471,7 +471,7 @@ export const cities = [
   {
     name: "Maceió",
     slug: "Maceio",
-    image: "/cities/maceio.jpg",
+    image: "/cities/maceio.webp",
     text: {
       tr: "Maceió, turkuaz denizi, beyaz kumlu plajları, Ponta Verde, Pajuçara, doğal lagünleri ve el sanatları pazarlarıyla bilinir.",
       en: "A coastal city known for turquoise waters, white-sand beaches, Ponta Verde, Pajuçara, natural lagoons and craft markets.",
@@ -494,7 +494,7 @@ export const cities = [
   {
     name: "Florianópolis",
     slug: "Florianopolis",
-    image: "/cities/florianopolis.jpg",
+    image: "/cities/florianopolis.webp",
     text: {
       tr: "Santa Catarina'nın başkenti, Büyülü Ada olarak anılır; plajları, sörf kültürü, gece hayatı ve şehir-doğa dengesiyle öne çıkar.",
       en: "Santa Catarina's capital, known as the Magic Island, with beaches, surf culture, nightlife and city-nature balance.",
