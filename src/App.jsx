@@ -33,6 +33,7 @@ export default function App() {
   const [path, setPath] = useState(() => normalizePath(window.location.pathname));
   const t = translations[lang] ?? translations.tr;
   const city = useMemo(() => cities.find((item) => normalizePath(cityPath(item)) === path), [path]);
+  const [waVisible, setWaVisible] = useState(false);
 
   useEffect(() => {
     const onPopState = () => setPath(normalizePath(window.location.pathname));
@@ -48,13 +49,36 @@ export default function App() {
     applySeo(buildSeo({ path, t, city }), lang);
   }, [city, lang, path, t]);
 
+  useEffect(() => {
+    let footerVisible = false;
+    let scrolledDown = false;
+
+    const onScroll = () => {
+      scrolledDown = window.scrollY > 300;
+      setWaVisible(scrolledDown && !footerVisible);
+    };
+
+    const footer = document.querySelector("footer");
+    const io = new IntersectionObserver(([entry]) => {
+      footerVisible = entry.isIntersecting;
+      setWaVisible(scrolledDown && !footerVisible);
+    }, { threshold: 0.1 });
+
+    if (footer) io.observe(footer);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      io.disconnect();
+    };
+  }, []);
+
   const page = renderPage({ path, t, lang, city });
 
   return (
     <>
       <Header lang={lang} setLang={handleLangChange} nav={t.nav} />
       <main><Suspense fallback={null}>{page}</Suspense></main>
-      <a className="whatsapp-float" href={company.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
+      <a className={`whatsapp-float${waVisible ? " wa-visible" : ""}`} href={company.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
         <svg className="whatsapp-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.832 6.502L4 29l7.752-1.814A11.94 11.94 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3z" fill="white" fillOpacity="0.15"/>
           <path d="M16 4.5C10.201 4.5 5.5 9.201 5.5 15c0 2.19.65 4.23 1.77 5.935L6 27l6.24-1.64A11.46 11.46 0 0016 26.5c5.799 0 10.5-4.701 10.5-10.5S21.799 4.5 16 4.5zm5.54 14.96c-.23.65-1.35 1.24-1.84 1.3-.47.06-1.07.08-1.72-.11-.4-.12-.9-.28-1.55-.56-2.72-1.18-4.5-3.93-4.64-4.11-.13-.18-1.1-1.46-1.1-2.79 0-1.32.69-1.97 1-2.28.3-.31.65-.38.87-.38.21 0 .43.002.62.012.2.01.46-.076.72.55.27.64.9 2.23.98 2.39.08.16.13.35.03.56-.1.21-.15.34-.3.52-.14.18-.3.4-.43.54-.14.14-.29.3-.13.58.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.7-.82.89-1.1.19-.28.38-.23.64-.14.26.1 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.16 1.33z" fill="white"/>
