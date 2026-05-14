@@ -74,7 +74,7 @@ function getPageDescription(path, t, city) {
   if (path === routes.cities) return t.citiesText;
   if (path === routes.tours) return t.toursText;
   if (path === routes.contact) return t.contactText;
-  if (path === routes.umutEker) return people.umutEker.bio;
+  if (path === routes.umutEker) return people.umutEker.bio?.tr ?? t.aboutLead;
   if (path === routes.privacy) return "GRUPOEKER Aviso de Privacidade e LGPD: dados tratados, bases legais, direitos do titular, retenção, compartilhamento e canal do encarregado.";
   if (path === routes.terms) return "Kullanım şartları, hizmet kapsamı, tekliflendirme ve kurumsal web sitesi koşulları.";
   if (path === routes.cookies) return "Çerez politikası: zorunlu teknik kullanım, pazarlama çerezi ve reklam izleme durumu.";
@@ -167,8 +167,8 @@ function buildJsonLd({ path, t, city, title, description, canonical, image }) {
       name: people.umutEker.name,
       birthDate: "1977-05-17",
       birthPlace: "Soma, Manisa, Türkiye",
-      jobTitle: people.umutEker.role,
-      description: people.umutEker.bio,
+      jobTitle: people.umutEker.role.tr,
+      description: people.umutEker.bio.tr,
       url: urlFor(routes.umutEker),
       sameAs: [people.umutEker.externalUrl],
       worksFor: { "@id": `${siteUrl}/#organization` },
