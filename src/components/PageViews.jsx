@@ -53,17 +53,44 @@ export function AboutPage({ t, lang }) {
         </div>
       </div>
 
-      <section id={sectionIds.about} className="section corporate-about">
-        <div className="container">
-          <article className="corporate-profile corporate-profile-full">
-            <p className="eyebrow">{t.aboutProfileTitle}</p>
-            <h2>{company.legalGroup}</h2>
-            <p>{t.aboutProfileText}</p>
-          </article>
+      {/* Corporate narrative — editorial, no white card */}
+      <section className="ab-narrative">
+        <div className="container ab-narrative-inner">
+          <div className="ab-narrative-sidebar">
+            <span className="eyebrow">{t.aboutProfileTitle}</span>
+          </div>
+          <div className="ab-narrative-body">
+            <h2 className="ab-narrative-title">{company.legalGroup}</h2>
+            <p className="ab-narrative-text">{t.aboutProfileText}</p>
+          </div>
         </div>
+      </section>
 
-        <div className="container corporate-block">
-          <SectionHeading eyebrow={t.aboutBrandsTitle} title={t.aboutBrandsTitle} />
+      {/* Brands showcase — dark green */}
+      <section className="ab-brands">
+        <div className="container">
+          <p className="eyebrow ab-brands-eyebrow">{t.aboutBrandsTitle}</p>
+          <div className="ab-brands-grid">
+            {groupBrands.map((brand, i) => (
+              <article className="ab-brand-lane" key={brand.name}>
+                <div className="ab-brand-lane-head">
+                  <span className="ab-brand-num">0{i + 1}</span>
+                  <span className="ab-brand-icon-wrap">
+                    <Icon name={brand.icon} size={17} />
+                  </span>
+                </div>
+                <h3 className="ab-brand-name">{brand.name}</h3>
+                <span className="ab-brand-entity">{brand.company}</span>
+                <p className="ab-brand-desc">{localize(brand.text, lang)}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Logo strip */}
+      <div className="ab-logos-wrap">
+        <div className="container">
           <div className="about-logos-strip-inner">
             {logos.map((logo) => (
               <div className="about-logo-item" key={logo.name}>
@@ -71,51 +98,45 @@ export function AboutPage({ t, lang }) {
               </div>
             ))}
           </div>
-          <div className="brand-profile-grid">
-            {groupBrands.map((brand) => (
-              <article className="brand-profile-card" key={brand.name}>
-                <div className="brand-card-icon-wrap">
-                  <Icon name={brand.icon} size={22} />
-                </div>
-                <h3>{brand.name}</h3>
-                <span>{brand.company}</span>
-                <p>{localize(brand.text, lang)}</p>
+        </div>
+      </div>
+
+      {/* Pillars — numbered editorial rows */}
+      <section className="ab-pillars">
+        <div className="container">
+          <p className="eyebrow">{t.aboutPillarsTitle}</p>
+          <div className="ab-pillars-list">
+            {aboutPillars.map((pillar, i) => (
+              <article className="ab-pillar-row" key={localize(pillar.title, lang)}>
+                <span className="ab-pillar-num">0{i + 1}</span>
+                <span className="ab-pillar-icon"><Icon name={pillar.icon} size={17} /></span>
+                <h3 className="ab-pillar-title">{localize(pillar.title, lang)}</h3>
+                <p className="ab-pillar-text">{localize(pillar.text, lang)}</p>
               </article>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className="container corporate-block">
-          <SectionHeading eyebrow={t.aboutPillarsTitle} title={t.aboutPillarsTitle} />
-          <div className="pillar-grid">
-            {aboutPillars.map((pillar) => (
-              <article className="pillar-card" key={localize(pillar.title, lang)}>
-                <div className="pillar-icon-wrap">
-                  <Icon name={pillar.icon} size={20} />
-                </div>
-                <h3>{localize(pillar.title, lang)}</h3>
-                <p>{localize(pillar.text, lang)}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="container corporate-management">
-          <div>
-            <p className="eyebrow">{t.aboutManagementTitle}</p>
-            <h2>{t.aboutManagementTitle}</h2>
-          </div>
-          <div className="management-card">
-            {founders.map((founder, index) => (
-              <span key={founder.name}>
-                {founder.url ? <a href={founder.url}>{founder.name}</a> : <strong>{founder.name}</strong>}
-                {index < founders.length - 1 && <em>/</em>}
+      {/* Founders — typographic drama */}
+      <section className="ab-founders">
+        <div className="container ab-founders-inner">
+          <p className="eyebrow">{t.aboutManagementTitle}</p>
+          <div className="ab-founders-names">
+            {founders.map((founder) => (
+              <span className="ab-founder-name" key={founder.name}>
+                {founder.url
+                  ? <a href={founder.url}>{founder.name}</a>
+                  : founder.name}
               </span>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className="container about-cta">
+      {/* CTA */}
+      <section className="ab-cta">
+        <div className="container ab-cta-inner">
           <h2>{t.aboutCtaTitle}</h2>
           <a className="button button-primary" href={company.whatsapp} target="_blank" rel="noreferrer">
             <Icon name="MessageCircle" />
@@ -124,24 +145,6 @@ export function AboutPage({ t, lang }) {
         </div>
       </section>
     </>
-  );
-}
-
-function Fact({ value, label }) {
-  return (
-    <div>
-      <strong>{value}</strong>
-      <span>{label}</span>
-    </div>
-  );
-}
-
-function SectionHeading({ eyebrow, title }) {
-  return (
-    <div className="corporate-heading">
-      <p className="eyebrow">{eyebrow}</p>
-      <h2>{title}</h2>
-    </div>
   );
 }
 
