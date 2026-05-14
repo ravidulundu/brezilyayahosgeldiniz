@@ -7,7 +7,7 @@ export default function Footer({ t }) {
       <div className="container footer-inner">
         <div className="footer-brand">
           <a href="/" className="footer-logo-link" aria-label={company.name}>
-            <img src="/logo.png" alt="" className="footer-logo" />
+            <img src="/logo.png" alt="" className="footer-logo" width="99" height="54" />
           </a>
           <p className="footer-tagline">{company.legalGroup}</p>
           <p className="footer-desc">{t.footerText}</p>

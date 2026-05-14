@@ -36,7 +36,7 @@ export default function Header({ lang, setLang, nav }) {
     <header className={`site-header${scrolled ? " header-scrolled" : ""}`}>
       <div className="container header-inner">
         <a href="/" className="brand" aria-label={company.name}>
-          <img src="/logo.png" alt="" className="brand-logo" />
+          <img src="/logo.png" alt="" className="brand-logo" fetchPriority="high" width="99" height="54" />
           <span className="brand-full">{company.name}</span>
           <span className="brand-short">Brasil</span>
         </a>

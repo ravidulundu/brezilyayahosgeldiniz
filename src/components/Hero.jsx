@@ -2,13 +2,13 @@ import { company, sectionIds } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
 const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=1920&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=65&w=1280&auto=format&fit=crop&fm=webp";
 
 export default function Hero({ t }) {
   const ticker = t.heroTicker ?? [];
   return (
     <section id="top" className="hero">
-      <img src={HERO_IMAGE} alt="" className="hero-bg" aria-hidden="true" />
+      <img src={HERO_IMAGE} alt="" className="hero-bg" aria-hidden="true" fetchPriority="high" width="1280" height="720" />
       <div className="hero-overlay" />
       <div className="hero-grain" aria-hidden="true" />
       <div className="hero-vignette" aria-hidden="true" />
