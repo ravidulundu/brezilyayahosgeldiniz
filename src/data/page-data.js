@@ -89,31 +89,6 @@ export const aboutPillars = [
   },
 ];
 
-export const people = {
-  umutEker: {
-    name: "Umut Eker",
-    birth: "17.05.1977 · Soma, Manisa",
-    image: "/Untitled3.jpg",
-    externalUrl: "https://umuteker.com.br/",
-    role: {
-      tr: "GRUPOEKER Yönetici Ortağı",
-      en: "GRUPOEKER Managing Partner",
-      pt: "Sócio-Gerente do GRUPOEKER",
-      es: "Socio Gerente de GRUPOEKER",
-    },
-    bio: {
-      tr: "17.05.1977 tarihinde Manisa'nın Soma ilçesinde doğan Umut Eker, ilk ve orta öğrenimini Soma'da tamamladı. Yüksek öğrenimini 1999 yılında İstanbul Üniversitesi Orman Endüstri Mühendisliği bölümünde tamamladı. 2010 yılından bu yana Brezilya'da GRUPOEKER şirketleri çatısı altında faaliyet gösteren KIRMIZIBEYAZ DO BRASIL Rent a Car, A LA TURCA Travel & MICE ve EXPOTURQUIA Events & PR markalarının yöneticiliğini yapmaktadır. Türkiye ve Brezilya arasındaki ticari, kültürel ve kurumsal ilişkilerde aktif çalışmalar yapmakta; birçok televizyon kanalında haber yorumcusu olarak canlı yayınlara katılmaktadır.",
-      en: "Born on 17 May 1977 in Soma, Manisa, Umut Eker completed his primary and secondary education in Soma. He graduated in Forest Industrial Engineering from Istanbul University in 1999. Since 2010, he has been managing GRUPOEKER's operations in Brazil — including the brands KIRMIZIBEYAZ DO BRASIL Rent a Car, A LA TURCA Travel & MICE and EXPOTURQUIA Events & PR. He is actively engaged in strengthening commercial, cultural and institutional ties between Turkey and Brazil, and regularly appears as a news commentator on several television channels.",
-      pt: "Nascido em 17 de maio de 1977 em Soma, Manisa, Umut Eker concluiu o ensino fundamental e médio em Soma. Formou-se em Engenharia Industrial Florestal pela Universidade de Istambul em 1999. Desde 2010, gerencia as operações do GRUPOEKER no Brasil — incluindo as marcas KIRMIZIBEYAZ DO BRASIL Rent a Car, A LA TURCA Travel & MICE e EXPOTURQUIA Events & PR. Atua ativamente no fortalecimento das relações comerciais, culturais e institucionais entre Turquia e Brasil, participando regularmente como comentarista de notícias em vários canais de televisão.",
-      es: "Nacido el 17 de mayo de 1977 en Soma, Manisa, Umut Eker realizó su educación primaria y secundaria en Soma. Se graduó en Ingeniería Industrial Forestal en la Universidad de Estambul en 1999. Desde 2010 dirige las operaciones de GRUPOEKER en Brasil — incluyendo las marcas KIRMIZIBEYAZ DO BRASIL Rent a Car, A LA TURCA Travel & MICE y EXPOTURQUIA Events & PR. Trabaja activamente en el fortalecimiento de las relaciones comerciales, culturales e institucionales entre Turquía y Brasil, participando regularmente como comentarista de noticias en varios canales de televisión.",
-    },
-    credentials: [
-      { tr: "MÜSİAD Brezilya Başkanı", en: "MÜSİAD Brazil President", pt: "Presidente do MÜSİAD Brasil", es: "Presidente de MÜSİAD Brasil" },
-      { tr: "DTİK Üyesi", en: "DTİK Member", pt: "Membro do DTİK", es: "Miembro de DTİK" },
-      { tr: "OREMDER Üyesi", en: "OREMDER Member", pt: "Membro do OREMDER", es: "Miembro de OREMDER" },
-    ],
-  },
-};
 
 export const logos = [
   { name: "GRUPOEKER", image: "/gropoeker.png" },

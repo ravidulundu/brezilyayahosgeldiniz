@@ -8,8 +8,8 @@ import {
   siteUrl,
   socialLinks,
   tours,
+  people,
 } from "../data/content.js";
-import { people } from "../data/page-data.js";
 
 const urlFor = (path) => new URL(path, siteUrl).href;
 
