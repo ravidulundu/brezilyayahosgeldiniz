@@ -50,26 +50,9 @@ export default function App() {
   }, [city, lang, path, t]);
 
   useEffect(() => {
-    let footerVisible = false;
-    let scrolledDown = false;
-
-    const onScroll = () => {
-      scrolledDown = window.scrollY > 300;
-      setWaVisible(scrolledDown && !footerVisible);
-    };
-
-    const footer = document.querySelector("footer");
-    const io = new IntersectionObserver(([entry]) => {
-      footerVisible = entry.isIntersecting;
-      setWaVisible(scrolledDown && !footerVisible);
-    }, { threshold: 0.1 });
-
-    if (footer) io.observe(footer);
+    const onScroll = () => setWaVisible(window.scrollY > 300);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      io.disconnect();
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const page = renderPage({ path, t, lang, city });
