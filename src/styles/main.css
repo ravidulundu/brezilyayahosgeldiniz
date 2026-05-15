@@ -466,11 +466,11 @@ h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid rgba(184, 145, 46, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 999px;
-  background: rgba(184, 145, 46, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   padding: 7px 16px;
-  color: var(--gold-bright);
+  color: #fff;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -483,8 +483,8 @@ h3, h4, h5, h6 {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--gold-bright);
-  box-shadow: 0 0 6px var(--gold-bright);
+  background: #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
   animation: pulse 2s infinite;
 }
 
@@ -1403,6 +1403,24 @@ h3, h4, h5, h6 {
   font-size: 0.9rem;
   line-height: 1.55;
   margin: 0;
+}
+
+
+.contact-info-row dd.contact-info-extra {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+
+.contact-info-row dd.contact-info-subtitle {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.72rem;
+  margin-top: 3px;
+  font-style: italic;
+  letter-spacing: 0.01em;
 }
 
 .contact-iata-badge {

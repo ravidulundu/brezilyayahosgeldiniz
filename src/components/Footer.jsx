@@ -28,7 +28,7 @@ export default function Footer({ t }) {
         </nav>
 
         <div className="footer-legal-col">
-          <p className="footer-nav-title">Legal</p>
+          <p className="footer-nav-title">{t.legal}</p>
           <a href={legalLinks.privacy}>{t.privacy}</a>
           <a href={legalLinks.terms}>{t.terms}</a>
           <a href={legalLinks.cookies}>{t.cookies}</a>

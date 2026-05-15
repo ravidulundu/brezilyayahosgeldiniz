@@ -17,7 +17,7 @@ export default function Hero({ t }) {
       <div className="hero-meta-bar">
         <span className="hero-meta-item">
           <Icon name="Calendar" size={11} />
-          Est. {company.started}
+          {t.est} {company.started}
         </span>
         <span className="hero-meta-sep" aria-hidden="true" />
         <span className="hero-meta-item">

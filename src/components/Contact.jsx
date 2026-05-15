@@ -2,10 +2,8 @@ import { company, routes } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
 const INFO_ROWS = [
-  { key: "tourism", icon: "MapPin", field: "addressTourism" },
-  { key: "rental", icon: "Car", field: "addressRental" },
-  { key: "phone", icon: "Phone", field: "phones" },
-  { key: "email", icon: "Mail", field: "emails" },
+  { key: "tourism", icon: "MapPin", field: "addressTourism", subtitle: "Eker Agencia de Viagens e Organizacoes de Eventos Ltda / A La Turca Travel & MICE", phone: company.phones[0], email: "alaturca@alaturca.com.br" },
+  { key: "rental", icon: "Car", field: "addressRental", subtitle: "Eker Locacao de Veiculos e Servico de Transporte de Passageiros Ltda / Kirmizibeyaz do Brasil Rent a Car & Shuttle", phone: company.phones[1], email: "alaturca@alaturca.com.br" },
 ];
 
 export default function Contact({ t, id, className = "" }) {
@@ -27,8 +25,6 @@ export default function Contact({ t, id, className = "" }) {
   const infoValues = {
     addressTourism: company.addressTourism,
     addressRental: company.addressRental,
-    phones: company.phones.join(" · "),
-    emails: company.emails.slice(0, 2).join(" · "),
   };
 
   return (
@@ -41,7 +37,7 @@ export default function Contact({ t, id, className = "" }) {
             <h2>{t.contactTitle}</h2>
             <p>{t.contactText}</p>
             <dl className="contact-info-list">
-              {INFO_ROWS.map(({ key, icon, field }) => (
+              {INFO_ROWS.map(({ key, icon, field, subtitle, phone, email }) => (
                 <div className="contact-info-row" key={key}>
                   <div className="contact-info-icon">
                     <Icon name={icon} size={15} />
@@ -49,6 +45,9 @@ export default function Contact({ t, id, className = "" }) {
                   <div>
                     <dt>{t[key]}</dt>
                     <dd>{infoValues[field]}</dd>
+                    {phone && <dd className="contact-info-extra"><Icon name="Phone" size={11} />{phone}</dd>}
+                    {email && <dd className="contact-info-extra"><Icon name="Mail" size={11} />{email}</dd>}
+                    {subtitle && <dd className="contact-info-subtitle">{subtitle}</dd>}
                   </div>
                 </div>
               ))}
