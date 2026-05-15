@@ -2222,31 +2222,35 @@ h3, h4, h5, h6 {
 
 .ab-narrative-inner {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 64px;
+  grid-template-columns: 160px 1fr;
+  gap: 56px;
   align-items: start;
 }
 
 .ab-narrative-sidebar {
   padding-top: 14px;
   border-top: 2px solid var(--gold);
+  position: sticky;
+  top: 100px;
 }
 
 .ab-narrative-title {
   font-family: "DM Serif Display", Georgia, serif;
-  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
   font-weight: 400;
   color: var(--green);
-  line-height: 0.97;
-  letter-spacing: -0.025em;
-  margin: 0 0 32px;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
 }
 
 .ab-narrative-text {
-  font-size: 1.12rem;
-  line-height: 1.82;
+  font-size: 1.02rem;
+  line-height: 1.72;
   color: var(--muted);
-  max-width: 680px;
+  max-width: none;
+  text-align: justify;
+  hyphens: auto;
 }
 
 /* Brands — dark green */
@@ -3164,5 +3168,514 @@ h3, h4, h5, h6 {
 
   .form-actions .button {
     width: 100%;
+  }
+}
+
+/* ========================================================
+   Refined Corporate — About + Umut Eker Page Enhancements
+   ======================================================== */
+
+/* Section intro shared */
+.refined-section-intro {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+}
+.refined-section-intro .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.refined-section-intro .eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold-bright);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.refined-section-intro h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--green);
+  margin: 14px 0 0;
+  letter-spacing: -0.015em;
+}
+
+/* Shared Timeline (About + Umut Eker) */
+.refined-timeline {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.refined-timeline-row {
+  display: grid;
+  grid-template-columns: 96px 16px 1fr;
+  gap: 28px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: flex-start;
+  position: relative;
+}
+.refined-timeline-row:last-child {
+  border-bottom: none;
+}
+.refined-timeline-year {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  color: var(--gold);
+  font-size: 1.5rem;
+  line-height: 1;
+  padding-top: 3px;
+}
+.refined-timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  margin: 9px 0 0 3px;
+  box-shadow: 0 0 0 4px rgba(240, 192, 64, 0.16);
+  flex-shrink: 0;
+}
+.refined-timeline-body {
+  min-width: 0;
+}
+.refined-timeline-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  color: var(--green);
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.refined-timeline-text {
+  color: var(--green-soft);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* By the numbers (About) */
+.ab-numbers {
+  background: var(--paper);
+}
+.ab-numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.ab-number-cell {
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.ab-number-cell::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: var(--gold-bright);
+  margin: 0 0 22px;
+  transform: translateY(-23px);
+}
+.ab-number-value {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  color: var(--green);
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  line-height: 1;
+  margin: 0 0 10px;
+  letter-spacing: -0.015em;
+}
+.ab-number-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green-soft);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Cinematic brand story (alternating rows) */
+.ab-brands-cinematic {
+  display: flex;
+  flex-direction: column;
+}
+.ab-brand-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 56px;
+  padding: 48px 0;
+  border-top: 1px solid rgba(240, 192, 64, 0.22);
+  align-items: center;
+}
+.ab-brand-row:last-child {
+  border-bottom: 1px solid rgba(240, 192, 64, 0.22);
+}
+.ab-brand-row.reverse {
+  grid-template-columns: 1fr 220px;
+}
+.ab-brand-row.reverse .ab-brand-side {
+  order: 2;
+  text-align: right;
+  align-items: flex-end;
+}
+.ab-brand-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+.ab-brand-year {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--gold-bright);
+  letter-spacing: -0.02em;
+}
+.ab-brand-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(240, 192, 64, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-bright);
+}
+.ab-brand-body .ab-brand-name {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  color: #fff;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.ab-brand-body .ab-brand-entity {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(240, 192, 64, 0.78);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.ab-brand-body .ab-brand-desc {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 560px;
+}
+.ab-brand-row.reverse .ab-brand-body .ab-brand-desc {
+  margin-left: auto;
+}
+
+/* Services scope grid */
+.ab-scope {
+  background: var(--cream);
+}
+.ab-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.ab-scope-cell {
+  padding: 30px 28px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.ab-scope-cell-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(240, 192, 64, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.ab-scope-cell-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--green);
+  line-height: 1.4;
+}
+
+/* Umut Eker — Profile Hero */
+.umut-hero-section {
+  background: var(--cream);
+}
+.umut-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+.umut-hero-photo {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.umut-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  display: block;
+}
+.umut-hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.umut-hero-name {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  line-height: 1.05;
+  color: var(--green);
+  letter-spacing: -0.02em;
+  margin: 6px 0 4px;
+}
+.umut-hero-role {
+  font-size: 1.02rem;
+  color: var(--green-soft);
+  line-height: 1.5;
+  margin: 0;
+}
+.umut-hero-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+.umut-hero-bio {
+  color: var(--green-soft);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  margin: 14px 0 0;
+  max-width: 540px;
+}
+
+/* Pull Quote */
+.umut-quote {
+  background: var(--paper);
+}
+.umut-quote-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.umut-quote-rule {
+  width: 36px;
+  height: 2px;
+  background: var(--gold-bright);
+  margin: 0 auto 26px;
+}
+.umut-quote-text {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+  line-height: 1.5;
+  color: var(--green);
+  font-style: italic;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+
+/* Umut Career timeline already uses .refined-timeline */
+.umut-career {
+  background: var(--cream);
+}
+
+/* Umut Managed brands */
+.umut-brands-section {
+  background: var(--paper);
+}
+.umut-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.umut-brand-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--gold-bright);
+  border-radius: 12px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.umut-brand-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.umut-brand-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.umut-brand-card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(240, 192, 64, 0.16);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.umut-brand-card-year {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--gold);
+  letter-spacing: 0.01em;
+}
+.umut-brand-card-name {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--green);
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+.umut-brand-card-text {
+  color: var(--green-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Umut Credentials (rows with descriptions) */
+.umut-credentials-section {
+  background: var(--cream);
+}
+.umut-credentials-list {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.umut-cred-row {
+  display: grid;
+  grid-template-columns: 220px 110px 1fr;
+  gap: 28px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.umut-cred-row:last-child {
+  border-bottom: none;
+}
+.umut-cred-org {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--green);
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+.umut-cred-role {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.umut-cred-desc {
+  color: var(--green-soft);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Umut Actions / CTA */
+.umut-actions-section {
+  background: var(--paper);
+}
+.umut-actions-inner {
+  text-align: center;
+}
+.umut-actions-inner .actions {
+  justify-content: center;
+  gap: 14px;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+/* Responsive — refined sections collapse to single column */
+@media (max-width: 900px) {
+  .umut-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .umut-hero-photo {
+    max-width: 420px;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+  }
+  .ab-numbers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .ab-brand-row,
+  .ab-brand-row.reverse {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 36px 0;
+  }
+  .ab-brand-row.reverse .ab-brand-side {
+    order: unset;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .ab-brand-row.reverse .ab-brand-body .ab-brand-desc {
+    margin-left: 0;
+  }
+  .ab-scope-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .umut-brands-grid {
+    grid-template-columns: 1fr;
+  }
+  .umut-cred-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 22px 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .refined-timeline-row {
+    grid-template-columns: 70px 12px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+  }
+  .refined-timeline-year {
+    font-size: 1.25rem;
+  }
+  .ab-numbers-grid {
+    grid-template-columns: 1fr;
+  }
+  .ab-scope-grid {
+    grid-template-columns: 1fr;
   }
 }

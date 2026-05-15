@@ -3,7 +3,19 @@ import Cities from "./Cities.jsx";
 import Contact from "./Contact.jsx";
 import Tours from "./Tours.jsx";
 import { cities, company, localize, people, routes, sectionIds } from "../data/content.js";
-import { aboutPillars, founders, groupBrands, legalContent, logos } from "../data/page-data.js";
+import {
+  aboutNumbers,
+  aboutPillars,
+  aboutTimeline,
+  credentialsDetailed,
+  founders,
+  groupBrands,
+  legalContent,
+  logos,
+  servicesScope,
+  umutQuote,
+  umutTimeline,
+} from "../data/page-data.js";
 import Icon from "./Icon.jsx";
 
 export function PageHero({ title, text, image }) {
@@ -55,22 +67,67 @@ export function AboutPage({ t, lang }) {
         </div>
       </section>
 
-      {/* Brands showcase — dark green */}
+      {/* Company timeline — refined corporate */}
+      <section className="section section-cream">
+        <div className="container">
+          <div className="refined-section-intro">
+            <p className="eyebrow">{t.aboutTimelineEyebrow}</p>
+            <h2>{t.aboutTimelineTitle}</h2>
+          </div>
+          <div className="refined-timeline">
+            {aboutTimeline.map((row) => (
+              <div className="refined-timeline-row" key={row.year}>
+                <span className="refined-timeline-year">{row.year}</span>
+                <span className="refined-timeline-dot" aria-hidden="true" />
+                <div className="refined-timeline-body">
+                  <h3 className="refined-timeline-title">{localize(row.title, lang)}</h3>
+                  <p className="refined-timeline-text">{localize(row.text, lang)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* By the numbers */}
+      <section className="section ab-numbers">
+        <div className="container">
+          <div className="refined-section-intro">
+            <p className="eyebrow">{t.aboutNumbersEyebrow}</p>
+            <h2>{t.aboutNumbersTitle}</h2>
+          </div>
+          <div className="ab-numbers-grid">
+            {aboutNumbers.map((item) => (
+              <div className="ab-number-cell" key={item.labelKey}>
+                <p className="ab-number-value">{item.value}</p>
+                <p className="ab-number-label">{t[item.labelKey]}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cinematic brand story — dark green */}
       <section className="ab-brands">
         <div className="container">
-          <p className="eyebrow ab-brands-eyebrow">{t.aboutBrandsTitle}</p>
-          <div className="ab-brands-grid">
+          <div className="refined-section-intro">
+            <p className="eyebrow ab-brands-eyebrow">{t.aboutBrandsStoryEyebrow}</p>
+            <h2 style={{ color: "#fff" }}>{t.aboutBrandsStoryTitle}</h2>
+          </div>
+          <div className="ab-brands-cinematic">
             {groupBrands.map((brand, i) => (
-              <article className="ab-brand-lane" key={brand.name}>
-                <div className="ab-brand-lane-head">
-                  <span className="ab-brand-num">0{i + 1}</span>
-                  <span className="ab-brand-icon-wrap">
-                    <Icon name={brand.icon} size={17} />
+              <article className={`ab-brand-row${i % 2 === 1 ? " reverse" : ""}`} key={brand.name}>
+                <div className="ab-brand-side">
+                  <span className="ab-brand-year">{brand.year}</span>
+                  <span className="ab-brand-icon-circle">
+                    <Icon name={brand.icon} size={22} />
                   </span>
                 </div>
-                <h3 className="ab-brand-name">{brand.name}</h3>
-                <span className="ab-brand-entity">{brand.company}</span>
-                <p className="ab-brand-desc">{localize(brand.text, lang)}</p>
+                <div className="ab-brand-body">
+                  <h3 className="ab-brand-name">{brand.name}</h3>
+                  <span className="ab-brand-entity">{brand.company}</span>
+                  <p className="ab-brand-desc">{localize(brand.text, lang)}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -102,6 +159,26 @@ export function AboutPage({ t, lang }) {
                 <h3 className="ab-pillar-title">{localize(pillar.title, lang)}</h3>
                 <p className="ab-pillar-text">{localize(pillar.text, lang)}</p>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service scope — refined grid */}
+      <section className="section ab-scope">
+        <div className="container">
+          <div className="refined-section-intro">
+            <p className="eyebrow">{t.aboutScopeEyebrow}</p>
+            <h2>{t.aboutScopeTitle}</h2>
+          </div>
+          <div className="ab-scope-grid">
+            {servicesScope.map((item) => (
+              <div className="ab-scope-cell" key={item.labelKey}>
+                <span className="ab-scope-cell-icon">
+                  <Icon name={item.icon} size={18} />
+                </span>
+                <span className="ab-scope-cell-label">{t[item.labelKey]}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -164,36 +241,112 @@ export function UmutEkerPage({ t, lang }) {
 
   return (
     <>
-      <section className="section section-cream section-below-header">
-        <div className="container person-profile">
-          <div className="person-photo-wrap">
+      {/* Profile Hero */}
+      <section className="section section-below-header umut-hero-section">
+        <div className="container umut-hero-grid">
+          <div className="umut-hero-photo">
             <img src={person.image} alt={person.name} />
           </div>
-          <article className="person-card">
-            <p className="person-role-label">{localize(person.role, lang)}</p>
-            <h2>{person.name}</h2>
-            <div className="person-meta">
+          <div className="umut-hero-info">
+            <p className="eyebrow">{t.umutIntroEyebrow}</p>
+            <h1 className="umut-hero-name">{person.name}</h1>
+            <p className="umut-hero-role">{localize(person.role, lang)}</p>
+            <div className="umut-hero-meta">
               <Icon name="Calendar" size={14} />
               <span>{person.birth}</span>
             </div>
-            <p className="person-bio">{localize(person.bio, lang)}</p>
-            {person.credentials && (
-              <div className="person-credentials">
-                {person.credentials.map((c) => (
-                  <span className="person-cred-tag" key={localize(c, lang)}>{localize(c, lang)}</span>
-                ))}
+            <p className="umut-hero-bio">{localize(person.bio, lang)}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Pull Quote */}
+      <section className="section umut-quote">
+        <div className="container">
+          <div className="umut-quote-wrap">
+            <div className="umut-quote-rule" aria-hidden="true" />
+            <p className="eyebrow" style={{ justifyContent: "center", marginBottom: 18 }}>{t.umutQuoteEyebrow}</p>
+            <blockquote className="umut-quote-text">{localize(umutQuote, lang)}</blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* Career Timeline */}
+      <section className="section umut-career">
+        <div className="container">
+          <div className="refined-section-intro">
+            <p className="eyebrow">{t.umutCareerEyebrow}</p>
+            <h2>{t.umutCareerTitle}</h2>
+          </div>
+          <div className="refined-timeline">
+            {umutTimeline.map((row) => (
+              <div className="refined-timeline-row" key={row.year}>
+                <span className="refined-timeline-year">{row.year}</span>
+                <span className="refined-timeline-dot" aria-hidden="true" />
+                <div className="refined-timeline-body">
+                  <p className="refined-timeline-text">{localize(row.text, lang)}</p>
+                </div>
               </div>
-            )}
-            <div className="actions">
-              <a className="button button-dark" href={person.externalUrl} target="_blank" rel="noreferrer">
-                <Icon name="ExternalLink" size={16} />
-                {t.externalProfile}
-              </a>
-              <a className="button button-light" href={routes.about}>
-                {t.aboutEyebrow}
-              </a>
-            </div>
-          </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Brands under management */}
+      <section className="section umut-brands-section">
+        <div className="container">
+          <div className="refined-section-intro">
+            <p className="eyebrow">{t.umutBrandsEyebrow}</p>
+            <h2>{t.umutBrandsTitle}</h2>
+          </div>
+          <div className="umut-brands-grid">
+            {groupBrands.map((brand) => (
+              <article className="umut-brand-card" key={brand.name}>
+                <div className="umut-brand-card-head">
+                  <span className="umut-brand-card-icon">
+                    <Icon name={brand.icon} size={18} />
+                  </span>
+                  <span className="umut-brand-card-year">{brand.year}</span>
+                </div>
+                <h3 className="umut-brand-card-name">{brand.name}</h3>
+                <p className="umut-brand-card-text">{localize(brand.text, lang)}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Memberships & Positions */}
+      <section className="section umut-credentials-section">
+        <div className="container">
+          <div className="refined-section-intro">
+            <p className="eyebrow">{t.umutCredentialsEyebrow}</p>
+            <h2>{t.umutCredentialsTitle}</h2>
+          </div>
+          <div className="umut-credentials-list">
+            {credentialsDetailed.map((c) => (
+              <div className="umut-cred-row" key={c.org}>
+                <h3 className="umut-cred-org">{c.org}</h3>
+                <span className="umut-cred-role">{localize(c.role, lang)}</span>
+                <p className="umut-cred-desc">{localize(c.desc, lang)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Actions */}
+      <section className="section umut-actions-section">
+        <div className="container umut-actions-inner">
+          <div className="actions">
+            <a className="button button-dark" href={person.externalUrl} target="_blank" rel="noreferrer">
+              <Icon name="ExternalLink" size={16} />
+              {t.externalProfile}
+            </a>
+            <a className="button button-light" href={routes.about}>
+              {t.aboutEyebrow}
+            </a>
+          </div>
         </div>
       </section>
     </>

@@ -3,7 +3,7 @@ import Icon from "./Icon.jsx";
 
 const INFO_ROWS = [
   { key: "tourism", icon: "MapPin", field: "addressTourism", subtitle: "Eker Agencia de Viagens e Organizacoes de Eventos Ltda / A La Turca Travel & MICE", phone: company.phones[0], email: "alaturca@alaturca.com.br" },
-  { key: "rental", icon: "Car", field: "addressRental", subtitle: "Eker Locacao de Veiculos e Servico de Transporte de Passageiros Ltda / Kirmizibeyaz do Brasil Rent a Car & Shuttle", phone: company.phones[1], email: "alaturca@alaturca.com.br" },
+  { key: "rental", icon: "Car", field: "addressRental", subtitle: "Eker Locacao de Veiculos e Servico de Transporte de Passageiros Ltda / Kirmizibeyaz do Brasil Rent a Car & Shuttle", phone: company.phones[1], email: "eker@eker.com.br" },
 ];
 
 export default function Contact({ t, id, className = "" }) {
