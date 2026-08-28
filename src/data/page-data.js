@@ -107,13 +107,6 @@ export const aboutTimeline = [
   },
 ];
 
-export const aboutNumbers = [
-  { value: "15+", labelKey: "numYearsActive" },
-  { value: "4", labelKey: "numCountries" },
-  { value: "3", labelKey: "numBrands" },
-  { value: "IATA", labelKey: "numCertified" },
-];
-
 export const servicesScope = [
   { icon: "Car", labelKey: "scopeVipTransfer" },
   { icon: "KeyRound", labelKey: "scopeCarRental" },

@@ -3,7 +3,6 @@ import Contact from "./Contact.jsx";
 import Tours from "./Tours.jsx";
 import { cities, cityPathFor, company, localize, pathFor, people, sectionIds } from "../data/content.js";
 import {
-  aboutNumbers,
   aboutPillars,
   aboutTimeline,
   credentialsDetailed,
@@ -82,24 +81,6 @@ export function AboutPage({ t, lang }) {
                   <h3 className="refined-timeline-title">{localize(row.title, lang)}</h3>
                   <p className="refined-timeline-text">{localize(row.text, lang)}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* By the numbers */}
-      <section className="section ab-numbers">
-        <div className="container">
-          <div className="refined-section-intro">
-            <p className="eyebrow">{t.aboutNumbersEyebrow}</p>
-            <h2>{t.aboutNumbersTitle}</h2>
-          </div>
-          <div className="ab-numbers-grid">
-            {aboutNumbers.map((item) => (
-              <div className="ab-number-cell" key={item.labelKey}>
-                <p className="ab-number-value">{item.value}</p>
-                <p className="ab-number-label">{t[item.labelKey]}</p>
               </div>
             ))}
           </div>
@@ -217,7 +198,7 @@ export function CitiesPage({ t, lang }) {
   return (
     <>
       <PageHero title={t.citiesTitle} text={t.citiesText} image={cities[0].image} />
-      <Cities t={t} lang={lang} id={sectionIds.cities} />
+      <Cities t={t} lang={lang} id={sectionIds.cities} showIntro={false} />
     </>
   );
 }
@@ -226,7 +207,7 @@ export function ToursPage({ t, lang }) {
   return (
     <>
       <PageHero title={t.toursTitle} text={t.toursText} />
-      <Tours t={t} lang={lang} id={sectionIds.tours} />
+      <Tours t={t} lang={lang} id={sectionIds.tours} showIntro={false} />
     </>
   );
 }

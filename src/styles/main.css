@@ -64,6 +64,7 @@
   --green-mid: #163028;
   --gold: #b8912e;
   --gold-bright: #f0c040;
+  --gold-text: #806312;
   --gold-pale: rgba(240, 192, 64, 0.12);
   --cream: #f7f3ea;
   --paper: #fffdf8;
@@ -86,7 +87,6 @@ html {
 
 body {
   margin: 0;
-  min-width: 320px;
 }
 
 #root {
@@ -685,11 +685,16 @@ h3, h4, h5, h6 {
 .panel-eyebrow,
 .eyebrow {
   margin: 0 0 16px;
-  color: var(--gold-bright);
+  color: var(--gold-text);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.operations .eyebrow,
+.ab-brands .eyebrow {
+  color: var(--gold-bright);
 }
 
 .section-intro .eyebrow {
@@ -2296,9 +2301,9 @@ h3, h4, h5, h6 {
   font-size: 1.02rem;
   line-height: 1.72;
   color: var(--muted);
-  max-width: none;
-  text-align: justify;
-  hyphens: auto;
+  max-width: 82ch;
+  text-align: left;
+  hyphens: none;
 }
 
 /* Brands — dark green */
@@ -2320,7 +2325,7 @@ h3, h4, h5, h6 {
 }
 
 .ab-brands-eyebrow {
-  color: rgba(255, 255, 255, 0.42);
+  color: var(--gold-bright);
   margin-bottom: 36px;
 }
 
@@ -2494,7 +2499,7 @@ h3, h4, h5, h6 {
 }
 
 .ab-founder-name + .ab-founder-name {
-  color: rgba(16, 37, 31, 0.38);
+  color: var(--green-soft);
 }
 
 .ab-founder-name a {
@@ -2557,6 +2562,10 @@ h3, h4, h5, h6 {
   .ab-narrative-inner {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .ab-narrative-sidebar {
+    position: static;
   }
 
   .ab-brands-grid {
@@ -3060,7 +3069,7 @@ h3, h4, h5, h6 {
   }
 
   .about-stats-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-stat-item:nth-child(2) {
@@ -3212,6 +3221,19 @@ h3, h4, h5, h6 {
     padding: 28px 24px;
   }
 
+  .contact-info-list {
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .contact-info-subtitle {
+    display: none;
+  }
+
+  .contact-iata-badge {
+    padding-top: 20px;
+  }
+
   .section {
     padding: 68px 0;
   }
@@ -3340,45 +3362,6 @@ h3, h4, h5, h6 {
   font-size: 0.92rem;
   line-height: 1.65;
   margin: 0;
-}
-
-/* By the numbers (About) */
-.ab-numbers {
-  background: var(--paper);
-}
-.ab-numbers-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-}
-.ab-number-cell {
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
-}
-.ab-number-cell::before {
-  content: "";
-  display: block;
-  width: 36px;
-  height: 2px;
-  background: var(--gold-bright);
-  margin: 0 0 22px;
-  transform: translateY(-23px);
-}
-.ab-number-value {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-weight: 400;
-  color: var(--green);
-  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
-  line-height: 1;
-  margin: 0 0 10px;
-  letter-spacing: -0.015em;
-}
-.ab-number-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--green-soft);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 /* Cinematic brand story (alternating rows) */
@@ -3716,10 +3699,6 @@ h3, h4, h5, h6 {
     margin: 0 auto;
     aspect-ratio: 1/1;
   }
-  .ab-numbers-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-  }
   .ab-brand-row,
   .ab-brand-row.reverse {
     grid-template-columns: 1fr;
@@ -3756,16 +3735,49 @@ h3, h4, h5, h6 {
   .refined-timeline-year {
     font-size: 1.25rem;
   }
-  .ab-numbers-grid {
-    grid-template-columns: 1fr;
-  }
   .ab-scope-grid {
     grid-template-columns: 1fr;
   }
 }
 
+@media (max-width: 480px) {
+  .whatsapp-float {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .whatsapp-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .whatsapp-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
 /* ── ÇOK DAR EKRANLAR ─────────────────────────────── */
 @media (max-width: 400px) {
+  .about-stat-item {
+    padding-inline: 8px;
+  }
+
+  .about-stat-item strong {
+    font-size: 1.75rem;
+  }
+
   /*
    * 320px'de kap 292px'e düşüyor ve marka adı üç satıra bölünüyordu.
    * Globe ikonunu gizlemek dil butonundan ~21px kazandırıyor; buton

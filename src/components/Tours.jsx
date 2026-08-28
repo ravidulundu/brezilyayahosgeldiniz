@@ -2,11 +2,11 @@ import { company, localize, tours } from "../data/content.js";
 import Icon from "./Icon.jsx";
 import { SectionIntro } from "./Services.jsx";
 
-export default function Tours({ t, lang, id }) {
+export default function Tours({ t, lang, id, showIntro = true }) {
   return (
     <section id={id} className="section section-white">
       <div className="container">
-        <SectionIntro eyebrow={t.toursEyebrow} title={t.toursTitle} text={t.toursText} />
+        {showIntro && <SectionIntro eyebrow={t.toursEyebrow} title={t.toursTitle} text={t.toursText} />}
         <div className="tour-stack">
           {tours.map((tour, i) => (
             <article

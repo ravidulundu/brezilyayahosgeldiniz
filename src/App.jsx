@@ -60,21 +60,24 @@ export default function App({ initialPathname }) {
   }, [canonicalPath]);
 
   useEffect(() => {
-    let footerVisible = false;
+    const blockedSections = new Set();
     let scrolledDown = false;
 
     const onScroll = () => {
       scrolledDown = window.scrollY > 300;
-      setWaVisible(scrolledDown && !footerVisible);
+      setWaVisible(scrolledDown && blockedSections.size === 0);
     };
 
-    const footer = document.querySelector("footer");
-    const io = new IntersectionObserver(([entry]) => {
-      footerVisible = entry.isIntersecting;
-      setWaVisible(scrolledDown && !footerVisible);
-    }, { threshold: 0.1 });
+    const blockers = document.querySelectorAll("footer, .ab-founders, .ab-cta, .contact-section");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) blockedSections.add(entry.target);
+        else blockedSections.delete(entry.target);
+      });
+      setWaVisible(scrolledDown && blockedSections.size === 0);
+    }, { threshold: 0, rootMargin: "0px 0px 120px 0px" });
 
-    if (footer) io.observe(footer);
+    blockers.forEach((section) => io.observe(section));
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);

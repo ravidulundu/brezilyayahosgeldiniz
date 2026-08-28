@@ -2,13 +2,13 @@ import { cities, cityPathFor, localize, pathFor } from "../data/content.js";
 import Icon from "./Icon.jsx";
 import { SectionIntro } from "./Services.jsx";
 
-export default function Cities({ t, lang, id, limit }) {
+export default function Cities({ t, lang, id, limit, showIntro = true }) {
   const displayed = limit ? cities.slice(0, limit) : cities;
 
   return (
     <section id={id} className="section section-cream">
       <div className="container">
-        <SectionIntro eyebrow={t.citiesEyebrow} title={t.citiesTitle} text={t.citiesText} />
+        {showIntro && <SectionIntro eyebrow={t.citiesEyebrow} title={t.citiesTitle} text={t.citiesText} />}
         <div className="city-grid">
           {displayed.map((city) => (
             <article className="city-card" key={city.name}>
