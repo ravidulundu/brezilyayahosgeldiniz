@@ -32,6 +32,7 @@ for (const pathname of paths) {
   if (!html.includes(`<meta property="og:image" content="${siteUrl}/`)) failures.push(`invalid og:image ${pathname}`);
   if (!/<script type="application\/ld\+json" data-seo="structured-data">/.test(html)) failures.push(`missing JSON-LD ${pathname}`);
   if (/<div id="root"><\/div>/.test(html)) failures.push(`empty prerendered root ${pathname}`);
+  if (!html.includes("<!-- -->")) failures.push(`missing hydration markers ${pathname}`);
 }
 
 const notFound = readFileSync(join(DIST, "404.html"), "utf8");
