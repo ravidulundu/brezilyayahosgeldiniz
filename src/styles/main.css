@@ -180,6 +180,8 @@ h3, h4, h5, h6 {
 
 .brand {
   gap: 10px;
+  /* 30px'lik logo tek başına dokunma hedefi olarak kısa kalıyordu. */
+  padding: 6px 0;
   color: white;
   font-weight: 700;
 }
@@ -258,6 +260,11 @@ h3, h4, h5, h6 {
   letter-spacing: 0.08em;
 }
 
+.lang-globe {
+  opacity: 0.6;
+  flex: none;
+}
+
 .lang-chevron,
 .lang-chevron-open {
   transition: transform 200ms ease;
@@ -312,10 +319,27 @@ h3, h4, h5, h6 {
   color: white;
 }
 
+.lang-option-code {
+  flex: none;
+  min-width: 30px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.09);
+  padding: 3px 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
 .lang-option-active {
   background: var(--gold-pale);
   color: var(--gold-bright);
   font-weight: 700;
+}
+
+.lang-option-active .lang-option-code {
+  background: rgba(240, 192, 64, 0.22);
+  color: var(--gold-bright);
 }
 
 /* ── HERO ─────────────────────────────────────────── */
@@ -508,7 +532,7 @@ h3, h4, h5, h6 {
   to   { opacity: 1; transform: translateY(0) skewY(0); }
 }
 
-.hero-h1-top {
+.hero-h1-line {
   display: block;
   font-size: clamp(3.2rem, 7.5vw, 7.8rem);
   color: white;
@@ -587,6 +611,7 @@ h3, h4, h5, h6 {
 /* Shared */
 .hero h1,
 .section h2,
+.contact-panel h1,
 .contact-panel h2 {
   margin: 0;
   letter-spacing: -0.02em;
@@ -1168,7 +1193,9 @@ h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-top: 14px;
+  /* Dokunma hedefi 18px'ti; dikey padding ile 40px'e çıkarıyoruz. */
+  margin-top: 3px;
+  padding: 11px 0;
   color: var(--gold-bright);
   font-weight: 900;
   font-size: 0.84rem;
@@ -1352,6 +1379,7 @@ h3, h4, h5, h6 {
   margin-bottom: 22px;
 }
 
+.contact-panel h1,
 .contact-panel h2 {
   font-size: clamp(1.9rem, 3.5vw, 3rem);
   line-height: 1.05;
@@ -1407,12 +1435,24 @@ h3, h4, h5, h6 {
 
 
 .contact-info-row dd.contact-info-extra {
-  display: flex;
-  align-items: center;
-  gap: 5px;
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.82rem;
   margin-top: 4px;
+}
+
+/* Telefon/e-posta artık tel: ve mailto: bağlantısı; dokunma hedefi için
+   satır yüksekliğini 36px'e çıkarıyoruz. */
+.contact-info-row dd.contact-info-extra a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+  color: inherit;
+  transition: color 140ms ease;
+}
+
+.contact-info-row dd.contact-info-extra a:hover {
+  color: var(--gold-bright);
 }
 
 .contact-info-row dd.contact-info-subtitle {
@@ -1460,12 +1500,13 @@ h3, h4, h5, h6 {
 .contact-form input,
 .contact-form textarea {
   width: 100%;
+  /* 16px'in altı iOS Safari'de odakta otomatik zoom tetikler. */
+  font-size: 1rem;
   border: 1.5px solid var(--line);
   border-radius: 12px;
   background: var(--paper);
   padding: 13px 16px;
   color: var(--green);
-  font-size: 0.98rem;
   outline: none;
   transition: border-color 200ms ease, background 200ms ease;
 }
@@ -1487,8 +1528,12 @@ h3, h4, h5, h6 {
 }
 
 .consent input {
-  width: auto;
-  margin-top: 3px;
+  /* Tarayıcı varsayılanı 13px; dokunmatikte hedef olarak çok küçük. */
+  width: 22px;
+  height: 22px;
+  flex: none;
+  margin-top: 1px;
+  accent-color: var(--gold);
 }
 
 .consent a {
@@ -1748,7 +1793,7 @@ h3, h4, h5, h6 {
 .footer-legal-col {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
 }
 
 .footer-nav-title {
@@ -1762,6 +1807,9 @@ h3, h4, h5, h6 {
 
 .footer-nav a,
 .footer-legal-col a {
+  display: block;
+  /* Dokunma hedefi: 17px metin + 2x11px padding ≈ 40px */
+  padding: 11px 0;
   color: rgba(255, 255, 255, 0.68);
   font-size: 0.92rem;
   font-weight: 500;
@@ -2870,6 +2918,24 @@ h3, h4, h5, h6 {
 .reveal-delay-3 { transition-delay: 0.28s; }
 .reveal-delay-4 { transition-delay: 0.38s; }
 
+.ab-brands-heading {
+  color: #fff;
+}
+
+.umut-quote-eyebrow {
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.contact-email-fallback {
+  margin-top: 0;
+}
+
+.contact-email-fallback a {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 980px) {
   .desktop-nav {
     display: none;
@@ -3010,7 +3076,7 @@ h3, h4, h5, h6 {
 
   .about-logos-strip,
   .about-logos-strip-inner {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-logo-item:nth-child(2) {
@@ -3080,12 +3146,18 @@ h3, h4, h5, h6 {
     width: min(100% - 28px, 1180px);
   }
 
+  /*
+   * Mobilde marka adi "Brasil" olarak kisaltiliyordu. Tam ad iki satira
+   * sararak sigiyor (375px'de header-actions'a ~20px bosluk kaliyor),
+   * bu yuzden kisaltmaya gerek yok. Kelime bazli sarma icin max-width,
+   * iki satirin blok gibi durmasi icin sik line-height.
+   */
   .brand-full {
-    display: none;
-  }
-
-  .brand-short {
-    display: inline;
+    /* 15ch kirilimi marka adini ortadan boluyordu; balance satirlari esitler. */
+    max-width: 14ch;
+    font-size: 0.8rem;
+    line-height: 1.18;
+    text-wrap: balance;
   }
 
   .hero-body {
@@ -3093,7 +3165,7 @@ h3, h4, h5, h6 {
     padding-bottom: 72px;
   }
 
-  .hero-h1-top {
+  .hero-h1-line {
     font-size: clamp(2.6rem, 11vw, 4.8rem);
   }
 
@@ -3107,7 +3179,19 @@ h3, h4, h5, h6 {
   }
 
   .about-logos-strip {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Kolon 173px'e düşüyor; sabit 160px görsel + 28px yan padding sığmaz. */
+  .about-logos-strip .about-logo-item,
+  .about-logos-strip-inner .about-logo-item {
+    min-height: 112px;
+    padding: 22px 14px;
+  }
+
+  .about-logo-item img {
+    max-width: 100%;
+    max-height: 64px;
   }
 
   .actions,
@@ -3677,5 +3761,17 @@ h3, h4, h5, h6 {
   }
   .ab-scope-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ── ÇOK DAR EKRANLAR ─────────────────────────────── */
+@media (max-width: 400px) {
+  /*
+   * 320px'de kap 292px'e düşüyor ve marka adı üç satıra bölünüyordu.
+   * Globe ikonunu gizlemek dil butonundan ~21px kazandırıyor; buton
+   * "TR ⌄" olarak kalıp açılır menü sezgisini koruyor.
+   */
+  .lang-globe {
+    display: none;
   }
 }

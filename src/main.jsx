@@ -1,36 +1,59 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./styles/main.css";
 
-createRoot(document.getElementById("root")).render(
+const rootElement = document.getElementById("root");
+const application = (
   <StrictMode>
     <App />
   </StrictMode>
 );
 
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("revealed");
-        io.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.1 }
-);
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, application);
+} else {
+  createRoot(rootElement).render(application);
+}
 
-const mo = new MutationObserver(() => {
-  document.querySelectorAll(".reveal:not(.revealed)").forEach((el) => io.observe(el));
-});
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
 
-mo.observe(document.documentElement, { childList: true, subtree: true });
+  const observeReveals = (root) => {
+    if (!(root instanceof Element)) return;
+    if (root.matches(".reveal:not(.revealed)")) io.observe(root);
+    root.querySelectorAll(".reveal:not(.revealed)").forEach((element) => io.observe(element));
+  };
 
-document.querySelectorAll(".reveal:not(.revealed)").forEach((el) => io.observe(el));
+  const mo = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      mutation.addedNodes.forEach(observeReveals);
+    }
+  });
 
-if ("modelContext" in navigator) {
-  navigator.modelContext.provideContext({
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+  observeReveals(document.documentElement);
+
+  window.addEventListener("pagehide", () => {
+    mo.disconnect();
+    io.disconnect();
+  }, { once: true });
+} else {
+  document.querySelectorAll(".reveal").forEach((element) => element.classList.add("revealed"));
+}
+
+if (typeof navigator.modelContext?.provideContext === "function") {
+  Promise.resolve(navigator.modelContext.provideContext({
     tools: [
       {
         name: "get_site_info",
@@ -83,5 +106,7 @@ if ("modelContext" in navigator) {
         }),
       },
     ],
+  })).catch(() => {
+    // Experimental browser integration must never affect the public site.
   });
 }

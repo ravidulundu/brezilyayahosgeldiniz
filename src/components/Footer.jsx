@@ -1,12 +1,12 @@
-import { company, legalLinks, socialLinks } from "../data/content.js";
+import { company, defaultLang, pathFor, socialLinks } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
-export default function Footer({ t }) {
+export default function Footer({ t, lang = defaultLang }) {
   return (
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <a href="/" className="footer-logo-link" aria-label={company.name}>
+          <a href={pathFor("home", lang)} className="footer-logo-link" aria-label={company.name}>
             <img src="/logo.webp" alt="" className="footer-logo" width="99" height="54" />
           </a>
           <p className="footer-tagline">{company.legalGroup}</p>
@@ -21,17 +21,17 @@ export default function Footer({ t }) {
         </div>
 
         <nav className="footer-nav" aria-label="Footer navigation">
-          <p className="footer-nav-title">{t.nav[0][0]}</p>
-          {t.nav.map(([label, href]) => (
-            <a key={href} href={href}>{label}</a>
+          <p className="footer-nav-title">{t.menu}</p>
+          {t.nav.map(([label, routeId]) => (
+            <a key={routeId} href={pathFor(routeId, lang)}>{label}</a>
           ))}
         </nav>
 
         <div className="footer-legal-col">
           <p className="footer-nav-title">{t.legal}</p>
-          <a href={legalLinks.privacy}>{t.privacy}</a>
-          <a href={legalLinks.terms}>{t.terms}</a>
-          <a href={legalLinks.cookies}>{t.cookies}</a>
+          <a href={pathFor("privacy", lang)}>{t.privacy}</a>
+          <a href={pathFor("terms", lang)}>{t.terms}</a>
+          <a href={pathFor("cookies", lang)}>{t.cookies}</a>
           <p className="footer-copy">© {company.started}–{new Date().getFullYear()} {company.name}</p>
         </div>
       </div>

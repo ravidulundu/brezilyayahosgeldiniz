@@ -1,4 +1,4 @@
-import { company, routes } from "../data/content.js";
+import { company, defaultLang, pathFor } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
 const INFO_ROWS = [
@@ -6,7 +6,16 @@ const INFO_ROWS = [
   { key: "rental", icon: "Car", field: "addressRental", subtitle: "Eker Locacao de Veiculos e Servico de Transporte de Passageiros Ltda / Kirmizibeyaz do Brasil Rent a Car & Shuttle", phone: company.phones[1], email: "eker@eker.com.br" },
 ];
 
-export default function Contact({ t, id, className = "" }) {
+/* formLabels sırasıyla eşleşir; telefon alanı mobilde numerik klavye açsın. */
+const FIELDS = [
+  { name: "name", type: "text", autoComplete: "name", maxLength: 100 },
+  { name: "city", type: "text", autoComplete: "address-level2", maxLength: 100 },
+  { name: "phone", type: "tel", autoComplete: "tel", inputMode: "tel", maxLength: 30 },
+];
+
+export default function Contact({ t, id, lang = defaultLang, className = "", headingLevel = "h2" }) {
+  const Heading = headingLevel;
+
   function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -34,7 +43,7 @@ export default function Contact({ t, id, className = "" }) {
           <div className="contact-panel-dots" aria-hidden="true" />
           <div className="contact-panel-inner">
             <div className="contact-accent-line" />
-            <h2>{t.contactTitle}</h2>
+            <Heading>{t.contactTitle}</Heading>
             <p>{t.contactText}</p>
             <dl className="contact-info-list">
               {INFO_ROWS.map(({ key, icon, field, subtitle, phone, email }) => (
@@ -45,8 +54,22 @@ export default function Contact({ t, id, className = "" }) {
                   <div>
                     <dt>{t[key]}</dt>
                     <dd>{infoValues[field]}</dd>
-                    {phone && <dd className="contact-info-extra"><Icon name="Phone" size={11} />{phone}</dd>}
-                    {email && <dd className="contact-info-extra"><Icon name="Mail" size={11} />{email}</dd>}
+                    {phone && (
+                      <dd className="contact-info-extra">
+                        <a href={`tel:${phone.replace(/[^+\d]/g, "")}`}>
+                          <Icon name="Phone" size={11} />
+                          {phone}
+                        </a>
+                      </dd>
+                    )}
+                    {email && (
+                      <dd className="contact-info-extra">
+                        <a href={`mailto:${email}`}>
+                          <Icon name="Mail" size={11} />
+                          {email}
+                        </a>
+                      </dd>
+                    )}
                     {subtitle && <dd className="contact-info-subtitle">{subtitle}</dd>}
                   </div>
                 </div>
@@ -63,10 +86,10 @@ export default function Contact({ t, id, className = "" }) {
           {t.formLabels.map((label, index) => (
             <label key={label}>
               <span>{label}</span>
-              {index === 3 ? (
-                <textarea name="message" rows="5" required />
+              {index === FIELDS.length ? (
+                <textarea name="message" rows="5" maxLength={2000} required />
               ) : (
-                <input name={["name", "city", "phone"][index]} required />
+                <input {...FIELDS[index]} required />
               )}
             </label>
           ))}
@@ -74,7 +97,7 @@ export default function Contact({ t, id, className = "" }) {
             <input type="checkbox" name="lgpdConsent" required />
             <span>
               {t.consentLabel}{" "}
-              <a href={routes.privacy} target="_blank" rel="noreferrer">
+              <a href={pathFor("privacy", lang)} target="_blank" rel="noreferrer">
                 {t.privacy}
               </a>
             </span>
@@ -90,6 +113,10 @@ export default function Contact({ t, id, className = "" }) {
               {t.whatsappLabel}
             </a>
           </div>
+          <p className="notice contact-email-fallback">
+            {t.emailFallback}{" "}
+            <a href={`mailto:${company.emails[0]}`}>{company.emails[0]}</a>
+          </p>
         </form>
       </div>
     </section>

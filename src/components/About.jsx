@@ -1,8 +1,8 @@
-import { company, routes } from "../data/content.js";
+import { company, defaultLang, pathFor } from "../data/content.js";
 import { founders, logos } from "../data/page-data.js";
 import Icon from "./Icon.jsx";
 
-export default function About({ t, id, compact = false }) {
+export default function About({ t, id, lang = defaultLang, compact = false }) {
   const milestones = [
     [company.started, t.foundedLabel, "Globe2"],
     [company.foundedTravel, company.travelBrand, "Plane"],
@@ -25,7 +25,7 @@ export default function About({ t, id, compact = false }) {
             <h2>{t.aboutTitle}</h2>
             <p className="lead">{t.aboutLead}</p>
             {compact && (
-              <a className="button button-dark about-detail-button" href={routes.about}>
+              <a className="button button-dark about-detail-button" href={pathFor("about", lang)}>
                 {t.aboutDetail}
               </a>
             )}
@@ -70,7 +70,7 @@ export default function About({ t, id, compact = false }) {
           <span>{t.foundersLabel}</span>
           <div>
             {founders.map((founder, index) => (
-              <FragmentFounder founder={founder} key={founder.name} separator={index < founders.length - 1} />
+              <FragmentFounder founder={founder} lang={lang} key={founder.name} separator={index < founders.length - 1} />
             ))}
           </div>
         </div>
@@ -79,10 +79,10 @@ export default function About({ t, id, compact = false }) {
   );
 }
 
-function FragmentFounder({ founder, separator }) {
+function FragmentFounder({ founder, lang, separator }) {
   return (
     <>
-      {founder.url ? <a href={founder.url}>{founder.name}</a> : <strong>{founder.name}</strong>}
+      {founder.routeId ? <a href={pathFor(founder.routeId, lang)}>{founder.name}</a> : <strong>{founder.name}</strong>}
       {separator && <em>/</em>}
     </>
   );

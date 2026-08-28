@@ -1,4 +1,4 @@
-import { cities, cityPath, localize, routes } from "../data/content.js";
+import { cities, cityPathFor, localize, pathFor } from "../data/content.js";
 import Icon from "./Icon.jsx";
 import { SectionIntro } from "./Services.jsx";
 
@@ -8,7 +8,7 @@ export default function Cities({ t, lang, id, limit }) {
   return (
     <section id={id} className="section section-cream">
       <div className="container">
-        <SectionIntro eyebrow={t.nav[2][0]} title={t.citiesTitle} text={t.citiesText} />
+        <SectionIntro eyebrow={t.citiesEyebrow} title={t.citiesTitle} text={t.citiesText} />
         <div className="city-grid">
           {displayed.map((city) => (
             <article className="city-card" key={city.name}>
@@ -21,7 +21,7 @@ export default function Cities({ t, lang, id, limit }) {
                   <h3>{city.name}</h3>
                 </div>
                 <p className="city-desc">{localize(city.text, lang)}</p>
-                <a className="city-cta" href={cityPath(city)}>
+                <a className="city-cta" href={cityPathFor(city.slug, lang)}>
                   {t.cityDetails} →
                 </a>
               </div>
@@ -30,7 +30,7 @@ export default function Cities({ t, lang, id, limit }) {
         </div>
         {limit && (
           <div className="cities-see-all">
-            <a className="button button-dark" href={routes.cities}>
+            <a className="button button-dark" href={pathFor("cities", lang)}>
               <Icon name="Map" />
               {t.citiesTitle} →
             </a>

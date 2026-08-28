@@ -1,8 +1,7 @@
-import About from "./About.jsx";
 import Cities from "./Cities.jsx";
 import Contact from "./Contact.jsx";
 import Tours from "./Tours.jsx";
-import { cities, company, localize, people, routes, sectionIds } from "../data/content.js";
+import { cities, cityPathFor, company, localize, pathFor, people, sectionIds } from "../data/content.js";
 import {
   aboutNumbers,
   aboutPillars,
@@ -112,7 +111,7 @@ export function AboutPage({ t, lang }) {
         <div className="container">
           <div className="refined-section-intro">
             <p className="eyebrow ab-brands-eyebrow">{t.aboutBrandsStoryEyebrow}</p>
-            <h2 style={{ color: "#fff" }}>{t.aboutBrandsStoryTitle}</h2>
+            <h2 className="ab-brands-heading">{t.aboutBrandsStoryTitle}</h2>
           </div>
           <div className="ab-brands-cinematic">
             {groupBrands.map((brand, i) => (
@@ -191,8 +190,8 @@ export function AboutPage({ t, lang }) {
           <div className="ab-founders-names">
             {founders.map((founder) => (
               <span className="ab-founder-name" key={founder.name}>
-                {founder.url
-                  ? <a href={founder.url}>{founder.name}</a>
+                {founder.routeId
+                  ? <a href={pathFor(founder.routeId, lang)}>{founder.name}</a>
                   : founder.name}
               </span>
             ))}
@@ -232,8 +231,9 @@ export function ToursPage({ t, lang }) {
   );
 }
 
-export function ContactPage({ t }) {
-  return <Contact t={t} id={sectionIds.contact} className="section-below-header" />;
+export function ContactPage({ t, lang }) {
+  /* Bu sayfada bolum basligi ayni zamanda sayfanin tek h1 i. */
+  return <Contact t={t} lang={lang} id={sectionIds.contact} className="section-below-header" headingLevel="h1" />;
 }
 
 export function UmutEkerPage({ t, lang }) {
@@ -265,7 +265,7 @@ export function UmutEkerPage({ t, lang }) {
         <div className="container">
           <div className="umut-quote-wrap">
             <div className="umut-quote-rule" aria-hidden="true" />
-            <p className="eyebrow" style={{ justifyContent: "center", marginBottom: 18 }}>{t.umutQuoteEyebrow}</p>
+            <p className="eyebrow umut-quote-eyebrow">{t.umutQuoteEyebrow}</p>
             <blockquote className="umut-quote-text">{localize(umutQuote, lang)}</blockquote>
           </div>
         </div>
@@ -343,7 +343,7 @@ export function UmutEkerPage({ t, lang }) {
               <Icon name="ExternalLink" size={16} />
               {t.externalProfile}
             </a>
-            <a className="button button-light" href={routes.about}>
+            <a className="button button-light" href={pathFor("about", lang)}>
               {t.aboutEyebrow}
             </a>
           </div>
@@ -379,7 +379,7 @@ export function CityPage({ t, lang, city }) {
             )}
 
             <div className="actions">
-              <a className="button button-light" href={routes.cities}>
+              <a className="button button-light" href={pathFor("cities", lang)}>
                 <Icon name="Map" />
                 {t.allCities}
               </a>
@@ -418,7 +418,7 @@ export function CityPage({ t, lang, city }) {
             </div>
             <div className="city-related-grid">
               {otherCities.map((c) => (
-                <a className="city-related-card" href={`/${c.slug}/`} key={c.slug}>
+                <a className="city-related-card" href={cityPathFor(c.slug, lang)} key={c.slug}>
                   <img src={c.image} alt={c.name} loading="lazy" />
                   <div className="city-related-overlay">
                     <span>{c.name}</span>
@@ -453,7 +453,7 @@ export function LegalPage({ t, lang, type }) {
           ) : (
             content.text.map((paragraph, i) => <p key={i}>{localize(paragraph, lang)}</p>)
           )}
-          <a className="button button-dark" href={routes.home}>
+          <a className="button button-dark" href={pathFor("home", lang)}>
             {t.backHome}
           </a>
         </div>
@@ -462,13 +462,13 @@ export function LegalPage({ t, lang, type }) {
   );
 }
 
-export function NotFoundPage({ t }) {
+export function NotFoundPage({ t, lang }) {
   return (
     <>
       <PageHero title={t.pageNotFound} />
       <section className="section">
         <div className="container legal-page">
-          <a className="button button-dark" href={routes.home}>
+          <a className="button button-dark" href={pathFor("home", lang)}>
             {t.backHome}
           </a>
         </div>

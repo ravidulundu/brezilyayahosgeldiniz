@@ -1,43 +1,62 @@
 import {
   cities,
-  cityPath,
+  cityPathFor,
   company,
   defaultShareImage,
-  routes,
+  localize,
+  pathFor,
   seoKeywords,
   siteUrl,
   socialLinks,
   tours,
   people,
 } from "../data/content.js";
+import { alternatePaths, defaultLang, localeCodes } from "../data/routes.js";
 
 const urlFor = (path) => new URL(path, siteUrl).href;
 
-export function buildSeo({ path, t, city }) {
-  const title = getPageTitle(path, t, city);
-  const description = getPageDescription(path, t, city);
-  const image = city?.image ?? defaultShareImage;
-  const canonical = urlFor(path);
-  const type = path === routes.home ? "website" : "article";
+/*
+ * SEO çözümlenmiş rota üzerinden kurulur: { lang, routeId, city }.
+ * routeId veya city'den biri dolu olur; ikisi de boşsa sayfa 404 sayılır
+ * ve noindex verilir.
+ */
+export function buildSeo({ lang, routeId, city, t }) {
+  const notFound = !routeId && !city;
+  const canonicalPath = notFound
+    ? pathFor("home", lang)
+    : city
+      ? cityPathFor(city.slug, lang)
+      : pathFor(routeId, lang);
+
+  const title = notFound ? t.pageNotFound : getPageTitle({ routeId, city, t, lang });
+  const description = notFound ? t.pageNotFound : getPageDescription({ routeId, city, t, lang });
+  const image = urlFor(city?.image ?? defaultShareImage);
+  const canonical = urlFor(canonicalPath);
+  const type = routeId === "home" ? "website" : "article";
 
   return {
-    title: `${title} | ${company.name}`,
+    /* Ana sayfada t.heroTitle ile company.name aynı string; üst üste eklemiyoruz. */
+    title: title === company.name ? title : `${title} | ${company.name}`,
     description,
     canonical,
     image,
     type,
-    jsonLd: buildJsonLd({ path, t, city, title, description, canonical, image }),
+    noindex: notFound,
+    /* 404'te alternatif üretmenin anlamı yok. */
+    alternates: notFound ? [] : alternatePaths({ routeId, citySlug: city?.slug }),
+    jsonLd: buildJsonLd({ routeId, city, t, lang, title, description, canonical, image }),
   };
 }
 
 export function applySeo(seo, lang) {
   document.title = seo.title;
-  document.documentElement.lang = lang;
+  document.documentElement.lang = localeCodes[lang] ?? lang;
 
   setMeta("description", seo.description);
-  setMeta("robots", "index, follow, max-image-preview:large");
+  setMeta("robots", seo.noindex ? "noindex, follow" : "index, follow, max-image-preview:large");
   setMeta("keywords", seoKeywords.join(", "));
   setLink("canonical", seo.canonical);
+  setAlternates(seo.alternates);
 
   setProperty("og:locale", localeFor(lang));
   setProperty("og:type", seo.type);
@@ -55,33 +74,40 @@ export function applySeo(seo, lang) {
   setJsonLd(seo.jsonLd);
 }
 
-function getPageTitle(path, t, city) {
-  if (city) return `${city.name} Rehber ve Transfer`;
-  if (path === routes.about) return t.aboutEyebrow;
-  if (path === routes.cities) return t.citiesTitle;
-  if (path === routes.tours) return `${t.toursTitle} | Türkçe Rehber`;
-  if (path === routes.contact) return t.contactTitle;
-  if (path === routes.umutEker) return people.umutEker.name;
-  if (path === routes.privacy) return t.privacy;
-  if (path === routes.terms) return t.terms;
-  if (path === routes.cookies) return t.cookies;
-  return t.heroTitle;
+function getPageTitle({ routeId, city, t, lang }) {
+  if (city) return `${city.name} ${t.cityTitleSuffix}`;
+
+  switch (routeId) {
+    case "about": return t.aboutEyebrow;
+    case "cities": return t.citiesTitle;
+    case "tours": return `${t.toursTitle} | ${t.toursGuideSuffix}`;
+    case "contact": return t.contactTitle;
+    case "umutEker": return people.umutEker.name;
+    case "privacy": return t.privacy;
+    case "terms": return t.terms;
+    case "cookies": return t.cookies;
+    default: return t.heroTitle;
+  }
 }
 
-function getPageDescription(path, t, city) {
-  if (city) return `${city.text?.tr ?? t.citiesText} Çok dilli rehberlik, VIP transfer, araç kiralama ve yerel operasyon koordinasyonu.`;
-  if (path === routes.about) return t.aboutLead;
-  if (path === routes.cities) return t.citiesText;
-  if (path === routes.tours) return t.toursText;
-  if (path === routes.contact) return t.contactText;
-  if (path === routes.umutEker) return people.umutEker.bio?.tr ?? t.aboutLead;
-  if (path === routes.privacy) return "GRUPOEKER Aviso de Privacidade e LGPD: dados tratados, bases legais, direitos do titular, retenção, compartilhamento e canal do encarregado.";
-  if (path === routes.terms) return "Kullanım şartları, hizmet kapsamı, tekliflendirme ve kurumsal web sitesi koşulları.";
-  if (path === routes.cookies) return "Çerez politikası: zorunlu teknik kullanım, pazarlama çerezi ve reklam izleme durumu.";
-  return t.heroText;
+function getPageDescription({ routeId, city, t, lang }) {
+  if (city) return `${localize(city.text, lang)} ${t.cityMetaTail}`;
+
+  switch (routeId) {
+    case "about": return t.aboutLead;
+    case "cities": return t.citiesText;
+    case "tours": return t.toursText;
+    case "contact": return t.contactText;
+    case "umutEker": return localize(people.umutEker.bio, lang);
+    case "privacy": return t.privacyMeta;
+    case "terms": return t.termsMeta;
+    case "cookies": return t.cookiesMeta;
+    default: return t.heroText;
+  }
 }
 
-function buildJsonLd({ path, t, city, title, description, canonical, image }) {
+
+function buildJsonLd({ routeId, city, t, lang, title, description, canonical, image }) {
   const organization = {
     "@type": "TravelAgency",
     "@id": `${siteUrl}/#organization`,
@@ -110,7 +136,7 @@ function buildJsonLd({ path, t, city, title, description, canonical, image }) {
     url: canonical,
     name: title,
     description,
-    inLanguage: ["tr", "en", "pt-BR", "es"],
+    inLanguage: localeCodes[lang] ?? lang,
     isPartOf: {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
@@ -122,7 +148,7 @@ function buildJsonLd({ path, t, city, title, description, canonical, image }) {
 
   const graph = [organization, webPage];
 
-  if (path === routes.home) {
+  if (routeId === "home") {
     graph.push({
       "@type": "ItemList",
       "@id": `${siteUrl}/#destinations`,
@@ -130,19 +156,19 @@ function buildJsonLd({ path, t, city, title, description, canonical, image }) {
       itemListElement: cities.map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: urlFor(cityPath(item)),
+        url: urlFor(cityPathFor(item.slug, lang)),
         name: item.name,
       })),
     });
   }
 
-  if (path === routes.tours) {
+  if (routeId === "tours") {
     graph.push(
       ...tours.map((tour) => ({
         "@type": "TouristTrip",
-        name: tour.title.tr,
-        description: tour.text.tr,
-        image: tour.image,
+        name: localize(tour.title, lang),
+        description: localize(tour.text, lang),
+        image: urlFor(tour.image),
         touristType: ["International travelers", "Corporate travelers", "Business delegations"],
         provider: { "@id": `${siteUrl}/#organization` },
       })),
@@ -153,23 +179,23 @@ function buildJsonLd({ path, t, city, title, description, canonical, image }) {
     graph.push({
       "@type": "TouristDestination",
       name: city.name,
-      description: city.text.tr,
-      image: city.image,
+      description: localize(city.text, lang),
+      image: urlFor(city.image),
       url: canonical,
       provider: { "@id": `${siteUrl}/#organization` },
     });
   }
 
-  if (path === routes.umutEker) {
+  if (routeId === "umutEker") {
     graph.push({
       "@type": "Person",
-      "@id": `${siteUrl}${routes.umutEker}#person`,
+      "@id": `${siteUrl}${pathFor("umutEker", defaultLang)}#person`,
       name: people.umutEker.name,
       birthDate: "1977-05-17",
       birthPlace: "Soma, Manisa, Türkiye",
-      jobTitle: people.umutEker.role.tr,
-      description: people.umutEker.bio.tr,
-      url: urlFor(routes.umutEker),
+      jobTitle: localize(people.umutEker.role, lang),
+      description: localize(people.umutEker.bio, lang),
+      url: canonical,
       sameAs: [people.umutEker.externalUrl],
       worksFor: { "@id": `${siteUrl}/#organization` },
       memberOf: ["MÜSİAD", "DTİK", "OREMDER"],
@@ -210,6 +236,36 @@ function setLink(rel, href) {
     document.head.appendChild(element);
   }
   element.setAttribute("href", href);
+}
+
+/*
+ * hreflang etiketleri. Sayfa değiştiğinde eski setin tamamı silinip yenisi
+ * yazılır; index.html'deki statik alternatifler de böylece yönetilir.
+ * x-default varsayılan dile (Türkçe) işaret eder.
+ */
+function setAlternates(alternates) {
+  document
+    .querySelectorAll("link[rel='alternate'][hreflang]")
+    .forEach((element) => element.remove());
+
+  if (!alternates?.length) return;
+
+  const fragment = document.createDocumentFragment();
+  for (const [code, path] of alternates) {
+    fragment.appendChild(createAlternate(localeCodes[code] ?? code, urlFor(path)));
+    if (code === defaultLang) {
+      fragment.appendChild(createAlternate("x-default", urlFor(path)));
+    }
+  }
+  document.head.appendChild(fragment);
+}
+
+function createAlternate(hreflang, href) {
+  const element = document.createElement("link");
+  element.setAttribute("rel", "alternate");
+  element.setAttribute("hreflang", hreflang);
+  element.setAttribute("href", href);
+  return element;
 }
 
 function setJsonLd(data) {

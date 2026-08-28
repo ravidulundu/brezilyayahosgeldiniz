@@ -1,6 +1,13 @@
-export const languages = ["tr", "en", "pt", "es"];
+export { cityPathFor, defaultLang, languages, localeCodes, pathFor, routeIds, routeSlugs } from "./routes.js";
 
-export const siteUrl = "https://www.brezilyayahosgeldiniz.com";
+const configuredSiteUrl = import.meta.env?.VITE_SITE_URL
+  ?? (typeof process !== "undefined" ? process.env?.VITE_SITE_URL : undefined)
+  ?? "https://www.brezilyayahosgeldiniz.com";
+const parsedSiteUrl = new URL(configuredSiteUrl);
+if (parsedSiteUrl.protocol !== "https:" || parsedSiteUrl.pathname !== "/" || parsedSiteUrl.search || parsedSiteUrl.hash) {
+  throw new Error("VITE_SITE_URL must be an HTTPS origin without a path, query, or fragment");
+}
+export const siteUrl = parsedSiteUrl.origin;
 export const defaultShareImage = `${siteUrl}/logo.png`;
 
 export const sectionIds = {
@@ -12,44 +19,6 @@ export const sectionIds = {
   contact: "contact",
 };
 
-export const routes = {
-  home: "/",
-  about: "/hakkimizda/",
-  cities: "/sehirler/",
-  tours: "/turlar/",
-  contact: "/iletisim/",
-  umutEker: "/umuteker/",
-  privacy: "/privacy-policy/",
-  terms: "/terms-of-service/",
-  cookies: "/cookie-policy/",
-};
-
-export const oldRouteAliases = {
-  "/Hakkımızda/": routes.about,
-  "/Hakkimizda/": routes.about,
-  "/hakkımızda/": routes.about,
-  "/Şehirler/": routes.cities,
-  "/Sehirler/": routes.cities,
-  "/şehirler/": routes.cities,
-  "/Turlar/": routes.tours,
-  "/İletişim/": routes.contact,
-  "/iletişim/": routes.contact,
-  "/Iletisim/": routes.contact,
-  "/UmutEker/": routes.umutEker,
-  "/umut-eker/": routes.umutEker,
-  "/Brasília/": "/Brasilia/",
-  "/São-Paulo/": "/Sao-Paulo/",
-  "/Foz-do-Iguaçu/": "/Foz-do-Iguacu/",
-  "/Vitória/": "/Vitoria/",
-  "/Maceió/": "/Maceio/",
-  "/Florianópolis/": "/Florianopolis/",
-};
-
-export const legalLinks = {
-  privacy: routes.privacy,
-  terms: routes.terms,
-  cookies: routes.cookies,
-};
 
 export const company = {
   name: "Brezilya'ya Hoş Geldiniz",
@@ -431,7 +400,7 @@ export const tours = [
       es: "Tour por Río de Janeiro",
     },
     location: "Rio de Janeiro",
-    image: "https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1200&auto=format&fit=crop",
+    image: "/cities/rio.webp",
     text: {
       tr: "Rio De Janeiro şehir turu; çok dilli rehberlik, profesyonel tercüme ve özel transfer koordinasyonuyla planlanır. Cristo Redentor, Sugarloaf, Copacabana ve Ipanema programı tek operasyon ekibiyle yönetilir.",
       en: "Rio de Janeiro city tours planned with multilingual guiding, professional interpretation and private transfer coordination across Christ the Redeemer, Sugarloaf, Copacabana and Ipanema.",
@@ -443,8 +412,9 @@ export const tours = [
 
 export const translations = {
   tr: {
-    nav: [["Ana Sayfa", routes.home], ["Şehirler", routes.cities], ["Turlar", routes.tours], ["İletişim", routes.contact], ["Hakkımızda", routes.about]],
+    nav: [["Ana Sayfa", "home"], ["Şehirler", "cities"], ["Turlar", "tours"], ["İletişim", "contact"], ["Hakkımızda", "about"]],
     heroTitle: "Brezilya'ya Hoş Geldiniz",
+    heroTitleLines: ["Brezilya'ya", "Hoş Geldiniz"],
     heroText: "Turizm, transfer, fuar ve kurumsal organizasyon alanlarında Brezilya'daki güvenilir yerel ortağınız.",
     badge: "Brezilya ve Tüm Güney Amerika",
     ctaPrimary: "WhatsApp ile İletişim",
@@ -486,6 +456,7 @@ export const translations = {
     whatsappLabel: "WhatsApp'tan Yaz",
     consentLabel: "LGPD kapsamında; ad, şehir, telefon ve mesaj bilgilerimin iletişim, teklif, rezervasyon ve operasyon amacıyla işlenmesine açık rıza veriyorum.",
     legalNotice: "Form e-posta istemciniz üzerinden gönderilir; bu sitede pazarlama çerezi veya reklam izleme kodu çalıştırılmamaktadır. Gizlilik ve LGPD detayları için Gizlilik Bildirimi sayfasını inceleyin.",
+    emailFallback: "E-posta uygulamanız açılmazsa doğrudan bu adrese yazın:",
     phone: "Telefon",
     email: "E-posta",
     tourism: "Turizm",
@@ -511,6 +482,14 @@ export const translations = {
     backHome: "Ana sayfaya dön",
     pageNotFound: "Sayfa bulunamadı",
     legal: "Yasal",
+    menu: "Menü",
+    citiesEyebrow: "Destinasyonlar",
+    cityTitleSuffix: "Rehber ve Transfer",
+    cityMetaTail: "Çok dilli rehberlik, VIP transfer, araç kiralama ve yerel operasyon koordinasyonu.",
+    toursGuideSuffix: "Türkçe Rehber",
+    privacyMeta: "GRUPOEKER gizlilik bildirimi ve LGPD: işlenen veriler, hukuki dayanaklar, ilgili kişi hakları, saklama süresi, paylaşım ve veri sorumlusu iletişim kanalı.",
+    termsMeta: "Kullanım şartları, hizmet kapsamı, tekliflendirme ve kurumsal web sitesi koşulları.",
+    cookiesMeta: "Çerez politikası: zorunlu teknik kullanım, pazarlama çerezi ve reklam izleme durumu.",
     est: "Kur.",
     aboutTimelineEyebrow: "Şirket Yolculuğu",
     aboutTimelineTitle: "2010'dan bu yana adım adım büyüyen yapı",
@@ -540,8 +519,9 @@ export const translations = {
     umutQuoteEyebrow: "Vizyon",
   },
   en: {
-    nav: [["Home", routes.home], ["Cities", routes.cities], ["Tours", routes.tours], ["Contact", routes.contact], ["About", routes.about]],
+    nav: [["Home", "home"], ["Cities", "cities"], ["Tours", "tours"], ["Contact", "contact"], ["About", "about"]],
     heroTitle: "Welcome to Brazil",
+    heroTitleLines: ["Welcome", "to Brazil"],
     heroText: "Your trusted local partner in Brazil for tourism, transfer, trade fairs and corporate operations.",
     badge: "Brazil & All of South America",
     ctaPrimary: "Contact via WhatsApp",
@@ -583,6 +563,7 @@ export const translations = {
     whatsappLabel: "Write on WhatsApp",
     consentLabel: "Under Brazil's LGPD, I expressly consent to the processing of my name, city, phone and message for contact, quotation, reservation and operational support.",
     legalNotice: "The form opens your email client; this site does not run marketing cookies or advertising trackers. See the Privacy and LGPD Notice for details.",
+    emailFallback: "If your email app does not open, write directly to:",
     phone: "Phone",
     email: "Email",
     tourism: "Tourism",
@@ -608,6 +589,14 @@ export const translations = {
     backHome: "Back home",
     pageNotFound: "Page not found",
     legal: "Legal",
+    menu: "Menu",
+    citiesEyebrow: "Destinations",
+    cityTitleSuffix: "Guide and Transfer",
+    cityMetaTail: "Multilingual guiding, VIP transfer, car rental and local operations coordination.",
+    toursGuideSuffix: "Turkish-Speaking Guide",
+    privacyMeta: "GRUPOEKER privacy notice and LGPD: data processed, legal bases, data subject rights, retention, sharing and the data protection contact channel.",
+    termsMeta: "Terms of service, scope of services, quotation process and corporate website conditions.",
+    cookiesMeta: "Cookie policy: strictly necessary technical use, marketing cookies and ad tracking status.",
     est: "Est.",
     aboutTimelineEyebrow: "Company Journey",
     aboutTimelineTitle: "Step by step since 2010",
@@ -637,8 +626,9 @@ export const translations = {
     umutQuoteEyebrow: "Vision",
   },
   pt: {
-    nav: [["Início", routes.home], ["Destinos", routes.cities], ["Tours", routes.tours], ["Contato", routes.contact], ["Sobre", routes.about]],
+    nav: [["Início", "home"], ["Destinos", "cities"], ["Tours", "tours"], ["Contato", "contact"], ["Sobre", "about"]],
     heroTitle: "Bem-vindo ao Brasil",
+    heroTitleLines: ["Bem-vindo", "ao Brasil"],
     heroText: "Seu parceiro local confiável no Brasil para turismo, transfer, feiras e operações corporativas.",
     badge: "Brasil e Toda América do Sul",
     ctaPrimary: "Falar pelo WhatsApp",
@@ -680,6 +670,7 @@ export const translations = {
     whatsappLabel: "Enviar pelo WhatsApp",
     consentLabel: "Nos termos da LGPD, autorizo expressamente o tratamento de nome, cidade, telefone e mensagem para contato, orçamento, reserva e suporte operacional.",
     legalNotice: "O formulário abre seu cliente de e-mail; este site não utiliza cookies de marketing ou rastreadores de publicidade. Consulte o Aviso de Privacidade e LGPD.",
+    emailFallback: "Se o aplicativo de e-mail não abrir, escreva diretamente para:",
     phone: "Telefone",
     email: "E-mail",
     tourism: "Turismo",
@@ -705,6 +696,14 @@ export const translations = {
     backHome: "Voltar ao início",
     pageNotFound: "Página não encontrada",
     legal: "Legal",
+    menu: "Menu",
+    citiesEyebrow: "Destinos",
+    cityTitleSuffix: "Guia e Transfer",
+    cityMetaTail: "Guia multilíngue, transfer VIP, aluguel de carros e coordenação de operações locais.",
+    toursGuideSuffix: "Guia que fala turco",
+    privacyMeta: "Aviso de Privacidade e LGPD do GRUPOEKER: dados tratados, bases legais, direitos do titular, retenção, compartilhamento e canal do encarregado.",
+    termsMeta: "Termos de uso, escopo dos serviços, processo de orçamento e condições do site corporativo.",
+    cookiesMeta: "Política de cookies: uso técnico estritamente necessário, cookies de marketing e status de rastreamento de anúncios.",
     est: "Fund.",
     aboutTimelineEyebrow: "Trajetória da Empresa",
     aboutTimelineTitle: "Passo a passo desde 2010",
@@ -734,8 +733,9 @@ export const translations = {
     umutQuoteEyebrow: "Visão",
   },
   es: {
-    nav: [["Inicio", routes.home], ["Destinos", routes.cities], ["Tours", routes.tours], ["Contacto", routes.contact], ["Nosotros", routes.about]],
+    nav: [["Inicio", "home"], ["Destinos", "cities"], ["Tours", "tours"], ["Contacto", "contact"], ["Nosotros", "about"]],
     heroTitle: "Bienvenido a Brasil",
+    heroTitleLines: ["Bienvenido", "a Brasil"],
     heroText: "Su socio local de confianza en Brasil para turismo, traslados, ferias y operaciones corporativas.",
     badge: "Brasil y Toda América del Sur",
     ctaPrimary: "Contactar por WhatsApp",
@@ -777,6 +777,7 @@ export const translations = {
     whatsappLabel: "Enviar por WhatsApp",
     consentLabel: "Conforme a la LGPD brasileña, autorizo expresamente el tratamiento de nombre, ciudad, teléfono y mensaje para contacto, cotización, reserva y soporte operativo.",
     legalNotice: "El formulario abre su cliente de e-mail; este sitio no usa cookies de marketing ni rastreadores publicitarios. Consulte el Aviso de Privacidad y LGPD.",
+    emailFallback: "Si la aplicación de correo no se abre, escriba directamente a:",
     phone: "Teléfono",
     email: "Correo Electrónico",
     tourism: "Turismo",
@@ -802,6 +803,14 @@ export const translations = {
     backHome: "Volver al inicio",
     pageNotFound: "Página no encontrada",
     legal: "Legal",
+    menu: "Menú",
+    citiesEyebrow: "Destinos",
+    cityTitleSuffix: "Guía y Traslado",
+    cityMetaTail: "Guía multilingüe, traslado VIP, alquiler de coches y coordinación de operaciones locales.",
+    toursGuideSuffix: "Guía de habla turca",
+    privacyMeta: "Aviso de privacidad y LGPD de GRUPOEKER: datos tratados, bases legales, derechos del titular, conservación, comunicación y canal del responsable.",
+    termsMeta: "Términos de servicio, alcance de los servicios, proceso de cotización y condiciones del sitio corporativo.",
+    cookiesMeta: "Política de cookies: uso técnico estrictamente necesario, cookies de marketing y estado del seguimiento publicitario.",
     est: "Fund.",
     aboutTimelineEyebrow: "Trayectoria de la Empresa",
     aboutTimelineTitle: "Paso a paso desde 2010",
@@ -834,8 +843,4 @@ export const translations = {
 
 export function localize(value, lang) {
   return typeof value === "string" ? value : value?.[lang] ?? value?.tr ?? "";
-}
-
-export function cityPath(city) {
-  return `/${city.slug}/`;
 }

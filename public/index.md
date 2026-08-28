@@ -85,10 +85,10 @@ Profile: https://umuteker.com.br/
 
 ## Key Pages
 
-- [Home](/) — Overview of services and destinations
-- [About Us](/hakkimizda/) — Company profile and brands
-- [Cities](/sehirler/) — All Brazilian destinations
-- [Tours](/turlar/) — Tour programs
-- [Contact](/iletisim/) — Get in touch
-- [Umut Eker](/umuteker/) — Managing Partner profile
+- [Home](/en/) — Overview of services and destinations
+- [About Us](/en/about/) — Company profile and brands
+- [Cities](/en/cities/) — All Brazilian destinations
+- [Tours](/en/tours/) — Tour programs
+- [Contact](/en/contact/) — Get in touch
+- [Umut Eker](/en/umuteker/) — Managing Partner profile
 - [Sitemap](/sitemap.xml)

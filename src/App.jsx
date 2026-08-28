@@ -1,42 +1,39 @@
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Cities from "./components/Cities.jsx";
-import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
-import Icon from "./components/Icon.jsx";
 import Operations from "./components/Operations.jsx";
 import Services from "./components/Services.jsx";
 import Tours from "./components/Tours.jsx";
 
-const pv = () => import("./components/PageViews.jsx");
-const AboutPage = lazy(() => pv().then((m) => ({ default: m.AboutPage })));
-const CitiesPage = lazy(() => pv().then((m) => ({ default: m.CitiesPage })));
-const CityPage = lazy(() => pv().then((m) => ({ default: m.CityPage })));
-const ContactPage = lazy(() => pv().then((m) => ({ default: m.ContactPage })));
-const LegalPage = lazy(() => pv().then((m) => ({ default: m.LegalPage })));
-const NotFoundPage = lazy(() => pv().then((m) => ({ default: m.NotFoundPage })));
-const ToursPage = lazy(() => pv().then((m) => ({ default: m.ToursPage })));
-const UmutEkerPage = lazy(() => pv().then((m) => ({ default: m.UmutEkerPage })));
-import { cities, cityPath, company, oldRouteAliases, routes, sectionIds, translations } from "./data/content.js";
+import {
+  AboutPage,
+  CitiesPage,
+  CityPage,
+  ContactPage,
+  LegalPage,
+  NotFoundPage,
+  ToursPage,
+  UmutEkerPage,
+} from "./components/PageViews.jsx";
+import { cities, company, sectionIds, translations } from "./data/content.js";
+import { alternatePaths, cityPathFor, pathFor, resolvePath } from "./data/routes.js";
 import { applySeo, buildSeo } from "./utils/seo.js";
 
-export default function App() {
-  const [lang, setLang] = useState(() => {
-    try { return localStorage.getItem("lang") ?? "tr"; } catch { return "tr"; }
-  });
-
-  function handleLangChange(code) {
-    setLang(code);
-    try { localStorage.setItem("lang", code); } catch {}
-  }
-  const [path, setPath] = useState(() => normalizePath(window.location.pathname));
+export default function App({ initialPathname }) {
+  /*
+   * Dilin tek kaynağı URL: /  → tr, /en/... → en.
+   * Böylece her dil ayrı ayrı indekslenebilir ve paylaşılan link
+   * karşı tarafta da aynı dilde açılır.
+   */
+  const [route, setRoute] = useState(() => resolveRoute(initialPathname ?? window.location.pathname));
+  const { lang, routeId, city, canonicalPath } = route;
   const t = translations[lang] ?? translations.tr;
-  const city = useMemo(() => cities.find((item) => normalizePath(cityPath(item)) === path), [path]);
   const [waVisible, setWaVisible] = useState(false);
 
   useEffect(() => {
-    const onPopState = () => setPath(normalizePath(window.location.pathname));
+    const onPopState = () => setRoute(resolveRoute(window.location.pathname));
     window.addEventListener("popstate", onPopState);
     window.addEventListener("hashchange", onPopState);
     return () => {
@@ -46,8 +43,21 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    applySeo(buildSeo({ path, t, city }), lang);
-  }, [city, lang, path, t]);
+    applySeo(buildSeo({ lang, routeId, city, t }), lang);
+  }, [city, lang, routeId, t]);
+
+  /*
+   * Adres çubuğunu kanonik yola çek: /en/hakkimizda/ → /en/about/,
+   * /İletişim/ → /iletisim/, /tr/hakkimizda/ → /hakkimizda/, /en → /en/,
+   * /rio-de-janeiro/ → /Rio-de-Janeiro/. Sayfa aynı, sadece URL temizlenir;
+   * geçmişe yeni kayıt eklemediği için geri tuşu bozulmaz.
+   * 404'te dokunmuyoruz — kullanıcı ne yazdığını görmeli.
+   */
+  useEffect(() => {
+    if (!canonicalPath || window.location.pathname === canonicalPath) return;
+    const { search, hash } = window.location;
+    window.history.replaceState({}, "", `${canonicalPath}${search}${hash}`);
+  }, [canonicalPath]);
 
   useEffect(() => {
     let footerVisible = false;
@@ -72,12 +82,23 @@ export default function App() {
     };
   }, []);
 
-  const page = renderPage({ path, t, lang, city });
+  /* Dil değiştirmek = aynı sayfanın o dildeki URL'ine gitmek. */
+  const langPaths = useMemo(
+    () => Object.fromEntries(alternatePaths({ routeId, citySlug: city?.slug })),
+    [city, routeId],
+  );
+
+  function handleLangChange(code) {
+    const target = langPaths[code];
+    if (target) window.location.assign(target);
+  }
+
+  const page = renderPage({ routeId, city, t, lang });
 
   return (
     <>
       <Header lang={lang} setLang={handleLangChange} nav={t.nav} />
-      <main><Suspense fallback={null}>{page}</Suspense></main>
+      <main>{page}</main>
       <a className={`whatsapp-float${waVisible ? " wa-visible" : ""}`} href={company.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
         <svg className="whatsapp-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.832 6.502L4 29l7.752-1.814A11.94 11.94 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3z" fill="white" fillOpacity="0.15"/>
@@ -85,7 +106,7 @@ export default function App() {
         </svg>
         <span className="whatsapp-label">WhatsApp</span>
       </a>
-      <Footer t={t} />
+      <Footer t={t} lang={lang} />
     </>
   );
 }
@@ -102,22 +123,41 @@ function HomePage({ t, lang }) {
   );
 }
 
-function renderPage({ path, t, lang, city }) {
-  if (path === routes.home) return <HomePage t={t} lang={lang} />;
-  if (path === routes.about) return <AboutPage t={t} lang={lang} />;
-  if (path === routes.cities) return <CitiesPage t={t} lang={lang} />;
-  if (path === routes.tours) return <ToursPage t={t} lang={lang} />;
-  if (path === routes.contact) return <ContactPage t={t} />;
-  if (path === routes.umutEker) return <UmutEkerPage t={t} lang={lang} />;
-  if (path === routes.privacy) return <LegalPage t={t} lang={lang} type="privacy" />;
-  if (path === routes.terms) return <LegalPage t={t} lang={lang} type="terms" />;
-  if (path === routes.cookies) return <LegalPage t={t} lang={lang} type="cookies" />;
+function renderPage({ routeId, city, t, lang }) {
+  switch (routeId) {
+    case "home": return <HomePage t={t} lang={lang} />;
+    case "about": return <AboutPage t={t} lang={lang} />;
+    case "cities": return <CitiesPage t={t} lang={lang} />;
+    case "tours": return <ToursPage t={t} lang={lang} />;
+    case "contact": return <ContactPage t={t} lang={lang} />;
+    case "umutEker": return <UmutEkerPage t={t} lang={lang} />;
+    case "privacy":
+    case "terms":
+    case "cookies": return <LegalPage t={t} lang={lang} type={routeId} />;
+    default: break;
+  }
+
   if (city) return <CityPage t={t} lang={lang} city={city} />;
-  return <NotFoundPage t={t} />;
+  return <NotFoundPage t={t} lang={lang} />;
 }
 
-function normalizePath(pathname) {
-  const decoded = decodeURI(pathname || routes.home);
-  const normalized = decoded.endsWith("/") || decoded === routes.home ? decoded : `${decoded}/`;
-  return oldRouteAliases[normalized] ?? normalized;
+/*
+ * resolvePath yalnızca slug'ı döndürür; şehir olup olmadığı burada
+ * doğrulanır. Eşleştirme büyük/küçük harfe duyarsız, canonical her zaman
+ * veri dosyasındaki asıl yazımı gösterir.
+ */
+function resolveRoute(pathname) {
+  const { lang, routeId, citySlug } = resolvePath(pathname);
+  const city = citySlug
+    ? cities.find((item) => item.slug.toLowerCase() === citySlug.toLowerCase())
+    : undefined;
+
+  /* 404'te kanonik yol yok. */
+  const canonicalPath = routeId
+    ? pathFor(routeId, lang)
+    : city
+      ? cityPathFor(city.slug, lang)
+      : null;
+
+  return { lang, routeId, city, canonicalPath };
 }

@@ -41,8 +41,16 @@ export default function Hero({ t }) {
           <span className="hero-eyebrow-pill">{t.badge}</span>
         </div>
 
+        {/*
+          Başlık iki satır olarak kurgulanmış. Tek string bırakılırsa kırılım
+          metin uzunluğuna ve pencere genişliğine kalıyor: Türkçe kazara ikiye
+          bölünürken (hem de "Hoş Geldiniz"in ortasından) diğer diller tek
+          satırda kalıyordu. Kırılımı dil verisinden alıyoruz.
+        */}
         <h1 className="hero-h1">
-          <span className="hero-h1-top">{t.heroTitle}</span>
+          {(t.heroTitleLines ?? [t.heroTitle]).map((line) => (
+            <span className="hero-h1-line" key={line}>{line}</span>
+          ))}
         </h1>
 
         <div className="hero-foot">

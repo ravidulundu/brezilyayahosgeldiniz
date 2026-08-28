@@ -4,9 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
+    "dev": "vite --host 127.0.0.1",
+    "prebuild": "node --env-file-if-exists=.env.production scripts/build-sitemap.mjs",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "postbuild": "node --env-file-if-exists=.env.production scripts/build-route-html.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "sitemap": "node scripts/build-sitemap.mjs",
+    "test": "node --env-file-if-exists=.env.production --test",
+    "verify": "npm test && npm run build && node --env-file-if-exists=.env.production scripts/verify-dist.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",

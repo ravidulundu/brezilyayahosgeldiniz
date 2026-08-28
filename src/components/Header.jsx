@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { company, languages } from "../data/content.js";
+import { company, languages, pathFor } from "../data/content.js";
 import Icon from "./Icon.jsx";
 
+/* Bayrak emojileri Windows tarayıcılarında glif yerine iki harfli kod olarak
+   çizildiği için (🇹🇷 → "TR") dil kodunun yanında ikinci bir "TR" görünüyordu.
+   Bayrak yerine globe ikonu + dil kodu kullanıyoruz. */
 const LANG_META = {
-  tr: { flag: "🇹🇷", label: "Türkçe" },
-  en: { flag: "🇬🇧", label: "English" },
-  pt: { flag: "🇧🇷", label: "Português" },
-  es: { flag: "🇪🇸", label: "Español" },
+  tr: { label: "Türkçe" },
+  en: { label: "English" },
+  pt: { label: "Português" },
+  es: { label: "Español" },
 };
 
 export default function Header({ lang, setLang, nav }) {
@@ -35,15 +38,15 @@ export default function Header({ lang, setLang, nav }) {
   return (
     <header className={`site-header${scrolled ? " header-scrolled" : ""}`}>
       <div className="container header-inner">
-        <a href="/" className="brand" aria-label={company.name}>
+        <a href={pathFor("home", lang)} className="brand" aria-label={company.name}>
           <img src="/logo.webp" alt="" className="brand-logo" fetchPriority="high" width="99" height="54" />
           <span className="brand-full">{company.name}</span>
           <span className="brand-short">Brasil</span>
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {nav.map(([label, href]) => (
-            <a key={href} href={href}>{label}</a>
+          {nav.map(([label, routeId]) => (
+            <a key={routeId} href={pathFor(routeId, lang)}>{label}</a>
           ))}
         </nav>
 
@@ -55,15 +58,16 @@ export default function Header({ lang, setLang, nav }) {
               onClick={() => setLangOpen((v) => !v)}
               aria-expanded={langOpen}
               aria-haspopup="listbox"
+              aria-label={`${current.label} — dil / language`}
             >
-              <span aria-hidden="true">{current.flag}</span>
+              <Icon name="Globe2" size={15} className="lang-globe" />
               <span className="lang-code">{lang.toUpperCase()}</span>
               <Icon name="ChevronDown" size={13} className={langOpen ? "lang-chevron-open" : "lang-chevron"} />
             </button>
             {langOpen && (
               <div className="lang-dropdown" role="listbox">
                 {languages.map((code) => {
-                  const meta = LANG_META[code] ?? { flag: "🌐", label: code };
+                  const meta = LANG_META[code] ?? { label: code.toUpperCase() };
                   return (
                     <button
                       key={code}
@@ -73,7 +77,7 @@ export default function Header({ lang, setLang, nav }) {
                       type="button"
                       onClick={() => { setLang(code); setLangOpen(false); }}
                     >
-                      <span aria-hidden="true">{meta.flag}</span>
+                      <span className="lang-option-code" aria-hidden="true">{code.toUpperCase()}</span>
                       <span>{meta.label}</span>
                     </button>
                   );
@@ -96,8 +100,8 @@ export default function Header({ lang, setLang, nav }) {
 
       {menuOpen && (
         <nav className="mobile-nav" aria-label="Mobile navigation">
-          {nav.map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+          {nav.map(([label, routeId]) => (
+            <a key={routeId} href={pathFor(routeId, lang)} onClick={() => setMenuOpen(false)}>{label}</a>
           ))}
         </nav>
       )}

@@ -1,7 +1,7 @@
-import { company, routes } from "./content.js";
+import { company } from "./content.js";
 
 export const founders = [
-  { name: "Umut Eker", url: routes.umutEker },
+  { name: "Umut Eker", routeId: "umutEker" },
   { name: "Vanessa C. Eker" },
 ];
 
