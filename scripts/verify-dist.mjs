@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { cities, siteUrl } from "../src/data/content.js";
-import { cityPathFor, defaultLang, languages, pathFor, routeIds } from "../src/data/routes.js";
+import { cityPathFor, languages, pathFor, routeIds } from "../src/data/routes.js";
 
 const ROOT = join(fileURLToPath(new URL("..", import.meta.url)));
 const DIST = join(ROOT, "dist");
@@ -38,11 +38,13 @@ for (const pathname of paths) {
 const notFound = readFileSync(join(DIST, "404.html"), "utf8");
 if (!/<meta name="robots" content="noindex, follow">/.test(notFound)) failures.push("404.html is indexable");
 
-const home = readFileSync(htmlPath(pathFor("home", defaultLang)), "utf8");
-const homeImagesWithoutAlt = [...home.matchAll(/<img\b[^>]*>/gi)]
-  .map(([tag]) => tag)
-  .filter((tag) => !/\balt=["'][^"']+["']/i.test(tag));
-if (homeImagesWithoutAlt.length) failures.push(`${homeImagesWithoutAlt.length} home images are missing alt text`);
+for (const lang of languages) {
+  const home = readFileSync(htmlPath(pathFor("home", lang)), "utf8");
+  const homeImagesWithoutAlt = [...home.matchAll(/<img\b[^>]*>/gi)]
+    .map(([tag]) => tag)
+    .filter((tag) => !/\balt=["'][^"']+["']/i.test(tag));
+  if (homeImagesWithoutAlt.length) failures.push(`${lang} home has ${homeImagesWithoutAlt.length} images missing alt text`);
+}
 
 const sitemap = readFileSync(join(DIST, "sitemap.xml"), "utf8");
 if (/<lastmod>/.test(sitemap)) failures.push("sitemap contains synthetic lastmod");

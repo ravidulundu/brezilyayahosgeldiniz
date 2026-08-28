@@ -414,6 +414,7 @@ export const translations = {
   tr: {
     nav: [["Ana Sayfa", "home"], ["Şehirler", "cities"], ["Turlar", "tours"], ["İletişim", "contact"], ["Hakkımızda", "about"]],
     homeMetaTitle: "Brezilya Turları, Rehber ve VIP Transfer | GRUPOEKER",
+    logoAlt: "GRUPOEKER Brezilya turizm acentesi logosu",
     heroTitle: "Brezilya'ya Hoş Geldiniz",
     heroTitleLines: ["Brezilya'ya", "Hoş Geldiniz"],
     heroImageAlt: "Rio de Janeiro ve Pão de Açúcar manzarası",
@@ -523,6 +524,7 @@ export const translations = {
   en: {
     nav: [["Home", "home"], ["Cities", "cities"], ["Tours", "tours"], ["Contact", "contact"], ["About", "about"]],
     homeMetaTitle: "Brazil Tours, Local Guides and VIP Transfers | GRUPOEKER",
+    logoAlt: "GRUPOEKER Brazil travel agency logo",
     heroTitle: "Welcome to Brazil",
     heroTitleLines: ["Welcome", "to Brazil"],
     heroImageAlt: "Rio de Janeiro and Sugarloaf Mountain panorama",
@@ -632,6 +634,7 @@ export const translations = {
   pt: {
     nav: [["Início", "home"], ["Destinos", "cities"], ["Tours", "tours"], ["Contato", "contact"], ["Sobre", "about"]],
     homeMetaTitle: "Tours no Brasil, Guias Locais e Transfer VIP | GRUPOEKER",
+    logoAlt: "Logotipo da agência de turismo GRUPOEKER Brasil",
     heroTitle: "Bem-vindo ao Brasil",
     heroTitleLines: ["Bem-vindo", "ao Brasil"],
     heroImageAlt: "Vista do Rio de Janeiro e do Pão de Açúcar",
@@ -741,6 +744,7 @@ export const translations = {
   es: {
     nav: [["Inicio", "home"], ["Destinos", "cities"], ["Tours", "tours"], ["Contacto", "contact"], ["Nosotros", "about"]],
     homeMetaTitle: "Tours en Brasil, Guías y Traslados VIP | GRUPOEKER",
+    logoAlt: "Logotipo de la agencia de turismo GRUPOEKER Brasil",
     heroTitle: "Bienvenido a Brasil",
     heroTitleLines: ["Bienvenido", "a Brasil"],
     heroImageAlt: "Vista de Río de Janeiro y el Pan de Azúcar",

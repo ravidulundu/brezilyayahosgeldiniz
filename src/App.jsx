@@ -97,7 +97,7 @@ export default function App({ initialPathname }) {
 
   return (
     <>
-      <Header lang={lang} setLang={handleLangChange} nav={t.nav} />
+      <Header lang={lang} setLang={handleLangChange} nav={t.nav} logoAlt={t.logoAlt} />
       <main>{page}</main>
       <a className={`whatsapp-float${waVisible ? " wa-visible" : ""}`} href={company.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
         <svg className="whatsapp-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
