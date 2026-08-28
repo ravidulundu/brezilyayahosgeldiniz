@@ -95,8 +95,8 @@ export function AboutPage({ t, lang }) {
             <h2 className="ab-brands-heading">{t.aboutBrandsStoryTitle}</h2>
           </div>
           <div className="ab-brands-cinematic">
-            {groupBrands.map((brand, i) => (
-              <article className={`ab-brand-row${i % 2 === 1 ? " reverse" : ""}`} key={brand.name}>
+            {groupBrands.map((brand) => (
+              <article className="ab-brand-row" key={brand.name}>
                 <div className="ab-brand-side">
                   <span className="ab-brand-year">{brand.year}</span>
                   <span className="ab-brand-icon-circle">

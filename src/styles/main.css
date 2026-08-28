@@ -3380,14 +3380,6 @@ h3, h4, h5, h6 {
 .ab-brand-row:last-child {
   border-bottom: 1px solid rgba(240, 192, 64, 0.22);
 }
-.ab-brand-row.reverse {
-  grid-template-columns: 1fr 220px;
-}
-.ab-brand-row.reverse .ab-brand-side {
-  order: 2;
-  text-align: right;
-  align-items: flex-end;
-}
 .ab-brand-side {
   display: flex;
   flex-direction: column;
@@ -3437,10 +3429,6 @@ h3, h4, h5, h6 {
   margin: 0;
   max-width: 560px;
 }
-.ab-brand-row.reverse .ab-brand-body .ab-brand-desc {
-  margin-left: auto;
-}
-
 /* Services scope grid */
 .ab-scope {
   background: var(--cream);
@@ -3699,19 +3687,10 @@ h3, h4, h5, h6 {
     margin: 0 auto;
     aspect-ratio: 1/1;
   }
-  .ab-brand-row,
-  .ab-brand-row.reverse {
+  .ab-brand-row {
     grid-template-columns: 1fr;
     gap: 22px;
     padding: 36px 0;
-  }
-  .ab-brand-row.reverse .ab-brand-side {
-    order: unset;
-    text-align: left;
-    align-items: flex-start;
-  }
-  .ab-brand-row.reverse .ab-brand-body .ab-brand-desc {
-    margin-left: 0;
   }
   .ab-scope-grid {
     grid-template-columns: repeat(2, 1fr);
