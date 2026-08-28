@@ -59,7 +59,7 @@ export const socialLinks = [
   },
 ];
 
-// founders, groupBrands, aboutPillars, logos, legalContent → src/data/page-data.js
+// Company profile, Umut Eker profile and legal copy live in focused data modules.
 
 export const people = {
   umutEker: {

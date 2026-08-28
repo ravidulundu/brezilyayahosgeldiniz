@@ -19,7 +19,8 @@ import {
 } from "./components/PageViews.jsx";
 import { cities, company, sectionIds, translations } from "./data/content.js";
 import { alternatePaths, cityPathFor, pathFor, resolvePath } from "./data/routes.js";
-import { applySeo, buildSeo } from "./utils/seo.js";
+import { applySeo } from "./utils/seo-dom.js";
+import { buildSeo } from "./utils/seo.js";
 
 export default function App({ initialPathname }) {
   /*

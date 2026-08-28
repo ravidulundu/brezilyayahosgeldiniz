@@ -1,5 +1,5 @@
 import { company, defaultLang, pathFor } from "../data/content.js";
-import { founders, logos } from "../data/page-data.js";
+import { founders, logos } from "../data/company-profile-data.js";
 import Icon from "./Icon.jsx";
 
 export default function About({ t, id, lang = defaultLang, compact = false }) {

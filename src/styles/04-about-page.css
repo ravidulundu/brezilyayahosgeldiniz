@@ -1,0 +1,359 @@
+/* ═══════════════════════════════════════════════════════
+   ABOUT PAGE — REDESIGNED (ab-*)
+═══════════════════════════════════════════════════════ */
+
+.ab-narrative {
+  background: var(--cream);
+  padding: 88px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.ab-narrative-inner {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.ab-narrative-sidebar {
+  padding-top: 14px;
+  border-top: 2px solid var(--gold);
+  position: sticky;
+  top: 100px;
+}
+
+.ab-narrative-title {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+  font-weight: 400;
+  color: var(--green);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+
+.ab-narrative-text {
+  font-size: 1.02rem;
+  line-height: 1.72;
+  color: var(--muted);
+  max-width: 82ch;
+  text-align: left;
+  hyphens: none;
+}
+
+/* Brands — dark green */
+.ab-brands {
+  background: var(--green);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ab-brands::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 14% 65%, rgba(184, 145, 46, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 86% 28%, rgba(184, 145, 46, 0.05) 0%, transparent 58%);
+  pointer-events: none;
+}
+
+.ab-brands-eyebrow {
+  color: var(--gold-bright);
+  margin-bottom: 36px;
+}
+
+.ab-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.ab-brand-lane {
+  padding: 44px 40px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 300ms ease;
+}
+
+.ab-brand-lane:last-child {
+  border-right: none;
+}
+
+.ab-brand-lane:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ab-brand-lane-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.ab-brand-num {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--gold);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.ab-brand-icon-wrap {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(184, 145, 46, 0.3);
+  border-radius: 10px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.ab-brand-name {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+  font-weight: 400;
+  color: white;
+  line-height: 1.22;
+  margin: 0 0 12px;
+}
+
+.ab-brand-entity {
+  display: block;
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.ab-brand-desc {
+  font-size: 0.9rem;
+  line-height: 1.78;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* Logo strip */
+.ab-logos-wrap {
+  background: var(--cream);
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Pillars */
+.ab-pillars {
+  background: var(--paper);
+  padding: 88px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.ab-pillars-list {
+  margin-top: 36px;
+}
+
+.ab-pillar-row {
+  display: grid;
+  grid-template-columns: 56px 38px 1fr 2fr;
+  gap: 0 24px;
+  align-items: center;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding 220ms ease;
+}
+
+.ab-pillar-row:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.ab-pillar-num {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 1.9rem;
+  color: var(--gold);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.ab-pillar-icon {
+  color: var(--green);
+  opacity: 0.55;
+  display: flex;
+  align-items: center;
+}
+
+.ab-pillar-title {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.1rem, 1.7vw, 1.42rem);
+  font-weight: 400;
+  color: var(--green);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.ab-pillar-text {
+  font-size: 0.93rem;
+  line-height: 1.78;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Founders */
+.ab-founders {
+  background: var(--cream);
+  padding: 88px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.ab-founders-inner {
+  max-width: 900px;
+}
+
+.ab-founders-names {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 22px;
+}
+
+.ab-founder-name {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(2.6rem, 6vw, 5.6rem);
+  font-weight: 400;
+  color: var(--green);
+  line-height: 1.0;
+  display: block;
+}
+
+.ab-founder-name + .ab-founder-name {
+  color: var(--green-soft);
+}
+
+.ab-founder-name a {
+  color: var(--green);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 8px;
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+
+.ab-founder-name a:hover {
+  color: var(--gold);
+  text-decoration-color: var(--gold-bright);
+}
+
+/* CTA */
+.ab-cta {
+  background: var(--green);
+  padding: 88px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ab-cta::after {
+  content: "2010";
+  position: absolute;
+  right: -12px;
+  bottom: -60px;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(10rem, 24vw, 24rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.04);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+}
+
+.ab-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.ab-cta-inner h2 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.9rem, 3.8vw, 3.8rem);
+  font-weight: 400;
+  color: white;
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+/* ── Responsive ab-* ───────────────────────────────── */
+@media (max-width: 900px) {
+  .ab-narrative-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ab-narrative-sidebar {
+    position: static;
+  }
+
+  .ab-brands-grid {
+    grid-template-columns: 1fr;
+    border-radius: 16px;
+  }
+
+  .ab-brand-lane {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .ab-brand-lane:last-child {
+    border-bottom: none;
+  }
+
+  .ab-pillar-row {
+    grid-template-columns: 44px 34px 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .ab-pillar-text {
+    grid-column: 3;
+    grid-row: 2;
+    margin-top: 6px;
+  }
+
+  .ab-cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .ab-narrative { padding: 56px 0; }
+  .ab-brands { padding: 56px 0; }
+  .ab-pillars { padding: 56px 0; }
+  .ab-founders { padding: 56px 0; }
+  .ab-cta { padding: 56px 0; }
+
+  .ab-pillar-row {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+    gap: 6px 14px;
+  }
+
+  .ab-pillar-icon { display: none; }
+
+  .ab-pillar-title { grid-column: 2; }
+
+  .ab-pillar-text {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 2px;
+  }
+}
