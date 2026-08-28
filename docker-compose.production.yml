@@ -1,7 +1,7 @@
 services:
   web:
     build:
-      context: ${SOURCE_CONTEXT:?SOURCE_CONTEXT must be set}
+      context: https://github.com/ravidulundu/brezilyayahosgeldiniz.git#main
       dockerfile: Dockerfile
       args:
         VITE_SITE_URL: ${VITE_SITE_URL:?VITE_SITE_URL must be set}
@@ -12,7 +12,7 @@ services:
       - "80"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.brezilyaya-hos-geldiniz.rule=Host(`${SITE_HOST:?SITE_HOST must be set}`)"
+      - "traefik.http.routers.brezilyaya-hos-geldiniz.rule=Host(`bh.dulunduztec.com.br`)"
       - "traefik.http.routers.brezilyaya-hos-geldiniz.entrypoints=websecure"
       - "traefik.http.routers.brezilyaya-hos-geldiniz.tls=true"
       - "traefik.http.routers.brezilyaya-hos-geldiniz.tls.certresolver=letsencrypt"
