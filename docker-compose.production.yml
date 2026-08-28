@@ -3,34 +3,19 @@ services:
     build:
       context: https://github.com/ravidulundu/brezilyayahosgeldiniz.git#main
       dockerfile: Dockerfile
-      args:
-        VITE_SITE_URL: ${VITE_SITE_URL:?VITE_SITE_URL must be set}
-    pull_policy: build
     restart: unless-stopped
-    init: true
     expose:
       - "80"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.brezilyaya-hos-geldiniz.rule=Host(`bh.dulunduztec.com.br`)"
-      - "traefik.http.routers.brezilyaya-hos-geldiniz.entrypoints=websecure"
-      - "traefik.http.routers.brezilyaya-hos-geldiniz.tls=true"
-      - "traefik.http.routers.brezilyaya-hos-geldiniz.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.brezilyaya-hos-geldiniz.service=brezilyaya-hos-geldiniz"
-      - "traefik.http.services.brezilyaya-hos-geldiniz.loadbalancer.server.port=80"
+      - "traefik.http.routers.brezilyaya-hos-geldiniz-web.rule=Host(`bh.dulunduztec.com.br`)"
+      - "traefik.http.routers.brezilyaya-hos-geldiniz-web.entrypoints=websecure"
+      - "traefik.http.routers.brezilyaya-hos-geldiniz-web.tls=true"
+      - "traefik.http.routers.brezilyaya-hos-geldiniz-web.tls.certresolver=letsencrypt"
+      - "traefik.http.services.brezilyaya-hos-geldiniz-web.loadbalancer.server.port=80"
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
       interval: 30s
       timeout: 5s
       retries: 3
-      start_period: 15s
-    security_opt:
-      - no-new-privileges:true
-    pids_limit: 128
-    mem_limit: 256m
-    cpus: 0.50
-    logging:
-      driver: json-file
-      options:
-        max-size: "10m"
-        max-file: "3"
+      start_period: 10s
