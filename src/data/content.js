@@ -413,8 +413,10 @@ export const tours = [
 export const translations = {
   tr: {
     nav: [["Ana Sayfa", "home"], ["Şehirler", "cities"], ["Turlar", "tours"], ["İletişim", "contact"], ["Hakkımızda", "about"]],
+    homeMetaTitle: "Brezilya Turları, Rehber ve VIP Transfer | GRUPOEKER",
     heroTitle: "Brezilya'ya Hoş Geldiniz",
     heroTitleLines: ["Brezilya'ya", "Hoş Geldiniz"],
+    heroImageAlt: "Rio de Janeiro ve Pão de Açúcar manzarası",
     heroText: "Turizm, transfer, fuar ve kurumsal organizasyon alanlarında Brezilya'daki güvenilir yerel ortağınız.",
     badge: "Brezilya ve Tüm Güney Amerika",
     ctaPrimary: "WhatsApp ile İletişim",
@@ -520,8 +522,10 @@ export const translations = {
   },
   en: {
     nav: [["Home", "home"], ["Cities", "cities"], ["Tours", "tours"], ["Contact", "contact"], ["About", "about"]],
+    homeMetaTitle: "Brazil Tours, Local Guides and VIP Transfers | GRUPOEKER",
     heroTitle: "Welcome to Brazil",
     heroTitleLines: ["Welcome", "to Brazil"],
+    heroImageAlt: "Rio de Janeiro and Sugarloaf Mountain panorama",
     heroText: "Your trusted local partner in Brazil for tourism, transfer, trade fairs and corporate operations.",
     badge: "Brazil & All of South America",
     ctaPrimary: "Contact via WhatsApp",
@@ -627,8 +631,10 @@ export const translations = {
   },
   pt: {
     nav: [["Início", "home"], ["Destinos", "cities"], ["Tours", "tours"], ["Contato", "contact"], ["Sobre", "about"]],
+    homeMetaTitle: "Tours no Brasil, Guias Locais e Transfer VIP | GRUPOEKER",
     heroTitle: "Bem-vindo ao Brasil",
     heroTitleLines: ["Bem-vindo", "ao Brasil"],
+    heroImageAlt: "Vista do Rio de Janeiro e do Pão de Açúcar",
     heroText: "Seu parceiro local confiável no Brasil para turismo, transfer, feiras e operações corporativas.",
     badge: "Brasil e Toda América do Sul",
     ctaPrimary: "Falar pelo WhatsApp",
@@ -734,8 +740,10 @@ export const translations = {
   },
   es: {
     nav: [["Inicio", "home"], ["Destinos", "cities"], ["Tours", "tours"], ["Contacto", "contact"], ["Nosotros", "about"]],
+    homeMetaTitle: "Tours en Brasil, Guías y Traslados VIP | GRUPOEKER",
     heroTitle: "Bienvenido a Brasil",
     heroTitleLines: ["Bienvenido", "a Brasil"],
+    heroImageAlt: "Vista de Río de Janeiro y el Pan de Azúcar",
     heroText: "Su socio local de confianza en Brasil para turismo, traslados, ferias y operaciones corporativas.",
     badge: "Brasil y Toda América del Sur",
     ctaPrimary: "Contactar por WhatsApp",

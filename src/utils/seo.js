@@ -35,8 +35,11 @@ export function buildSeo({ lang, routeId, city, t }) {
   const type = routeId === "home" ? "website" : "article";
 
   return {
-    /* Ana sayfada t.heroTitle ile company.name aynı string; üst üste eklemiyoruz. */
-    title: title === company.name ? title : `${title} | ${company.name}`,
+    title: routeId === "home"
+      ? t.homeMetaTitle
+      : title === company.name
+        ? title
+        : `${title} | ${company.name}`,
     description,
     canonical,
     image,

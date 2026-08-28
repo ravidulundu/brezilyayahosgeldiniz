@@ -39,7 +39,7 @@ export default function Header({ lang, setLang, nav }) {
     <header className={`site-header${scrolled ? " header-scrolled" : ""}`}>
       <div className="container header-inner">
         <a href={pathFor("home", lang)} className="brand" aria-label={company.name}>
-          <img src="/logo.webp" alt="" className="brand-logo" fetchPriority="high" width="99" height="54" />
+          <img src="/logo.webp" alt={`${company.name} logo`} className="brand-logo" fetchPriority="high" width="99" height="54" />
           <span className="brand-full">{company.name}</span>
           <span className="brand-short">Brasil</span>
         </a>

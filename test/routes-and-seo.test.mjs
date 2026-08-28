@@ -35,3 +35,10 @@ test("SEO images are absolute for city and tour metadata", () => {
     if (item.image) assert.match(item.image, /^https:\/\//);
   }
 });
+
+test("localized home titles stay within the recommended length", () => {
+  for (const lang of languages) {
+    const seo = buildSeo({ lang, routeId: "home", city: undefined, t: translations[lang] });
+    assert.ok(seo.title.length >= 50 && seo.title.length <= 60, `${lang} home title length: ${seo.title.length}`);
+  }
+});

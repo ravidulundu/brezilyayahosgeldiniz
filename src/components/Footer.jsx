@@ -7,7 +7,7 @@ export default function Footer({ t, lang = defaultLang }) {
       <div className="container footer-inner">
         <div className="footer-brand">
           <a href={pathFor("home", lang)} className="footer-logo-link" aria-label={company.name}>
-            <img src="/logo.webp" alt="" className="footer-logo" width="99" height="54" />
+            <img src="/logo.webp" alt={`${company.name} logo`} className="footer-logo" width="99" height="54" />
           </a>
           <p className="footer-tagline">{company.legalGroup}</p>
           <p className="footer-desc">{t.footerText}</p>

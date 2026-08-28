@@ -7,7 +7,7 @@ export default function Hero({ t }) {
   const ticker = t.heroTicker ?? [];
   return (
     <section id="top" className="hero">
-      <img src={HERO_IMAGE} alt="" className="hero-bg" aria-hidden="true" fetchPriority="high" width="1280" height="720" />
+      <img src={HERO_IMAGE} alt={t.heroImageAlt} className="hero-bg" fetchPriority="high" width="1280" height="720" />
       <div className="hero-overlay" />
       <div className="hero-grain" aria-hidden="true" />
       <div className="hero-vignette" aria-hidden="true" />
