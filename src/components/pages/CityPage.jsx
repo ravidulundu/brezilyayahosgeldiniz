@@ -68,7 +68,13 @@ export function CityPage({ t, lang, city }) {
             <div className="city-related-grid">
               {otherCities.map((c) => (
                 <a className="city-related-card" href={cityPathFor(c.slug, lang)} key={c.slug}>
-                  <img src={c.image} alt={c.name} loading="lazy" />
+                  <img
+                    src={c.image}
+                    srcSet={`${c.image.replace(/\.webp$/, "-480.webp")} 480w, ${c.image.replace(/\.webp$/, "-800.webp")} 800w, ${c.image} 1024w`}
+                    sizes="(max-width: 700px) calc(50vw - 21px), 25vw"
+                    alt={c.name}
+                    loading="lazy"
+                  />
                   <div className="city-related-overlay">
                     <span>{c.name}</span>
                   </div>

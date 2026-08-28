@@ -7,7 +7,16 @@ export default function Hero({ t }) {
   const ticker = t.heroTicker ?? [];
   return (
     <section id="top" className="hero">
-      <img src={HERO_IMAGE} alt={t.heroImageAlt} className="hero-bg" fetchPriority="high" width="1280" height="720" />
+      <img
+        src={HERO_IMAGE}
+        srcSet="/hero-768.webp 768w, /hero.webp 1280w"
+        sizes="100vw"
+        alt={t.heroImageAlt}
+        className="hero-bg"
+        fetchPriority="high"
+        width="1280"
+        height="720"
+      />
       <div className="hero-overlay" />
       <div className="hero-grain" aria-hidden="true" />
       <div className="hero-vignette" aria-hidden="true" />

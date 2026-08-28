@@ -115,14 +115,14 @@
   font-family: "DM Serif Display", Georgia, serif;
   font-size: 9rem;
   line-height: 1;
-  color: rgba(184, 145, 46, 0.1);
+  color: rgba(128, 99, 18, 0.75);
   pointer-events: none;
   user-select: none;
   letter-spacing: -0.04em;
 }
 
 .svc-card-dark .svc-num {
-  color: rgba(240, 192, 64, 0.08);
+  color: rgba(240, 192, 64, 0.55);
 }
 
 .svc-icon-wrap {
@@ -268,7 +268,7 @@
   font-family: "DM Serif Display", Georgia, serif;
   font-size: 7rem;
   line-height: 0.85;
-  color: rgba(184, 145, 46, 0.1);
+  color: rgba(128, 99, 18, 0.75);
   position: absolute;
   top: 16px;
   right: 22px;

@@ -58,7 +58,7 @@ export default function Header({ lang, setLang, nav, logoAlt }) {
               onClick={() => setLangOpen((v) => !v)}
               aria-expanded={langOpen}
               aria-haspopup="listbox"
-              aria-label={`${current.label} — dil / language`}
+              aria-label={`${lang.toUpperCase()} — ${current.label} — dil / language`}
             >
               <Icon name="Globe2" size={15} className="lang-globe" />
               <span className="lang-code">{lang.toUpperCase()}</span>

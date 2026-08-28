@@ -13,7 +13,13 @@ export default function Cities({ t, lang, id, limit, showIntro = true }) {
           {displayed.map((city) => (
             <article className="city-card" key={city.name}>
               <div className="city-media">
-                <img src={city.image} alt={city.name} loading="lazy" />
+                <img
+                  src={city.image}
+                  srcSet={`${city.image.replace(/\.webp$/, "-480.webp")} 480w, ${city.image.replace(/\.webp$/, "-800.webp")} 800w, ${city.image} 1024w`}
+                  sizes="(max-width: 700px) calc(100vw - 28px), (max-width: 1000px) 50vw, 33vw"
+                  alt={city.name}
+                  loading="lazy"
+                />
               </div>
               <div className="city-overlay">
                 <div className="city-name-row">
