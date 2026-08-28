@@ -5,16 +5,16 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     expose:
-      - "80"
+      - "8080"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.brezilyaya-hos-geldiniz-web.rule=Host(`bh.dulunduztec.com.br`)"
       - "traefik.http.routers.brezilyaya-hos-geldiniz-web.entrypoints=websecure"
       - "traefik.http.routers.brezilyaya-hos-geldiniz-web.tls=true"
       - "traefik.http.routers.brezilyaya-hos-geldiniz-web.tls.certresolver=letsencrypt"
-      - "traefik.http.services.brezilyaya-hos-geldiniz-web.loadbalancer.server.port=80"
+      - "traefik.http.services.brezilyaya-hos-geldiniz-web.loadbalancer.server.port=8080"
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:8080/"]
       interval: 30s
       timeout: 5s
       retries: 3
